@@ -1,0 +1,6 @@
+# Ignore Mac OS Stuff
+.DS\_Store
+.AppleDouble
+.LSOverride
+
+*.sw?

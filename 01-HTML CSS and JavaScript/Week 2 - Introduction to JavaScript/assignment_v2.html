@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>JavaScript Color Guessing Game</title>
+
+    <script type="text/javascript">
+      var target;
+      var colours = ["black","blue","brown","cyan","gold","grey","green","indigo","magenta","navy","pink","purple","red","yellow"];
+      var guess_input;
+      var finished = false;
+      var guesses = 0;
+      colours.sort()
+
+      function do_game() {
+        var target_index = Math.random() * colours.length; // [0,1) -> [0,length)
+        target_index = Math.floor(target_index); // [0, length-1]
+        target = colours[target_index];
+
+        /* I have decided to use a "do while" loop so I can handle the case in
+        which the user presses the "cancel" button.
+        */
+        do {
+          guess_input = prompt("I'm thinking of one of these colours:"+
+                                    "\n\n"+ colours.join(", ") + "\n\n"+
+                                    "What colour am I thinking of?");
+          guesses += 1;
+          finished = check_guess();
+        }
+        while (!finished && guess_input != null)
+      }
+
+      function check_guess() {
+        if (guess_input == null) {
+          return false;
+        }
+        if (colours.indexOf(guess_input) == -1)  {
+          alert("Sorry, I don't recognize your colour.\n\n"+
+                "Please try again.");
+          return false;
+        }
+        if (guess_input > target) {
+          alert("Sorry your guess is not correct!\n\n"+
+                "Hint: your colour is alphabetically higher than mine.\n\n"+
+                      "Please try again.");
+          return false;
+        }
+        if (guess_input < target) {
+          alert("Sorry your guess is not correct!\n\n"+
+                "Hint: your colour is alphabetically lower than mine.\n\n"+
+                      "Please try again.");
+          return false;
+        }
+        myBody = document.getElementsByTagName("body")[0];
+        myBody.style.background=target;
+        // Change the background colour to the target
+        alert("Congratulations! You have guessed the colour!\n\n"+
+              "It took you " + guesses +
+              " guesses to finish the game!\n\n"+
+              "You can see the colour in the background.");
+        return true;
+      }
+    </script>
+  </head>
+
+  <body onload="do_game()">
+  </body>
+</html>
