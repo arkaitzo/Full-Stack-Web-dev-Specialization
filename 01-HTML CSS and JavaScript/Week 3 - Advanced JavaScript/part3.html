@@ -22,13 +22,14 @@
       function generateFaces() {
         var numberOfFaces = 5;
         var theLeftSide = document.getElementById("leftSide");
+        var theRightSide = document.getElementById("rightSide");
 
         while(numberOfFaces != 0) {
           // Create img element
           var image = document.createElement("img");
           // Set the source of the image
           // http://home.cse.ust.hk/~rossiter/mooc/matching_game/smile.png
-          image.setAttribute("src","smile.png");
+          image.setAttribute("src","smile2.png");
 
           // Generate random values between 0px and (500-100) = 400px
           var random_top = Math.random() * 401; // [0,400.99]
@@ -45,12 +46,19 @@
           // Update the remaining number of faces
           numberOfFaces -= 1;
         }
+
+        // Clone the whole left branch
+        leftSideImages = theLeftSide.cloneNode(true);
+        leftSideImages.removeChild(leftSideImages.lastChild);
+
+        // Add the image to the DOM as a child of "leftSide"
+        theRightSide.appendChild(leftSideImages);
       }
     </script>
   </head>
 
   <body id="theBody" onload="generateFaces()">
-    <h1>Matching Game - Part 2</h1>
+    <h1>Matching Game - Part 3</h1>
     <p>Click on the extra smiling face on the left.</p>
     <div id="leftSide"></div>
     <div id="rightSide"></div>
