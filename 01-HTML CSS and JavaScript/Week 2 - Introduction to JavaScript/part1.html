@@ -6,17 +6,18 @@
 
     <script type="text/javascript">
       var target;
-      var colours = ["black","blue","brown","cyan","gold","grey","green","indigo","magenta","navy","pink","purple","red","yellow"];
+      var colours = ["black","blue","brown","cyan","gold","grey","green",
+        "indigo","magenta","navy","pink","purple","red","yellow"];
       var guess_input;
       var finished = false;
       var guesses = 0;
       colours.sort()
 
       function do_game() {
-        var target_index = Math.random() * colours.length; // [0,1) -> [0,length)
+        var target_index = Math.random() * colours.length; // [0,length)
         target_index = Math.floor(target_index); // [0, length-1]
         target = colours[target_index];
-        alert(target);
+        alert("The target color is: " + target);
 
         /* I have decided to use a "do while" loop so I can handle the case in
         which the user presses the "cancel" button.
@@ -26,12 +27,11 @@
                                     "\n\n"+ colours.join(", ") + "\n\n"+
                                     "What colour am I thinking of?");
           guesses += 1;
-          finished = check_guess();
+          if (guess_input == target) {
+            finished = true;
+          }
         }
         while (!finished && guess_input != null)
-      }
-
-      function check_guess() {
       }
     </script>
   </head>
