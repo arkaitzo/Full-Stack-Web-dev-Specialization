@@ -28,3 +28,42 @@ address {
     margin: 0px;
     color: #0F0F0F;
 }
+
+body {
+    align: center;
+    /* Avoid hidding the body under the navbar */
+    padding: 50px 0px 0px 0px;
+    z-index: 0; /* End */
+}
+
+.navbar-inverse {
+    background: #303F9F;
+}
+
+/* Active items of the navigation bar */
+.navbar-inverse .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > .active > a:hover,
+.navbar-inverse .navbar-nav > .active > a:focus {
+    color: #FFF;
+    background: #1A237E;
+}
+
+/* Opened items of the navigation bar (i.e. dropdown)*/
+.navbar-inverse .navbar-nav > .open > a,
+.navbar-inverse .navbar-nav > .open > a:hover,
+.navbar-inverse .navbar-nav > .open > a:focus {
+    color: #FFF;
+    background: #1A237E;
+}
+
+/* List items of the dropdown menu */
+.navbar-inverse .navbar-nav .open .dropdown-menu > li > a,
+.navbar-inverse .navbar-nav .open .dropdown-menu {
+    background-color: #303F9F;
+    color: #EEEEEE;
+}
+
+/* List items of the dropdown menu when hovering */
+.navbar-inverse .navbar-nav .open .dropdown-menu > li > a:hover {
+    color: #000000;
+}
