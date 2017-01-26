@@ -115,7 +115,7 @@
                 <!-- "Reserve Table" Button -->
                 <div class="col-xs-12 col-sm-2">
                     <p style="padding:40px;"></p>
-                    <a href="#" class="btn btn-warning btn-block" role="button">Reserve Table</a>
+                    <a href="#reserve-form" class="btn btn-warning btn-block" role="button">Reserve Table</a>
                 </div> <!-- End of "Reserve Table" Button -->
             </div>
         </div>
@@ -142,8 +142,7 @@
                         </h2>
                         <p>A unique combination of Indian Uthappam (pancake) and Italian pizza, topped with Cerignola olives, ripe vine cherry tomatoes, Vidalia onion, Guntur chillies and Buffalo Paneer.</p>
                         <p><a class="btn btn-primary btn-xs" href="#">
-                            More &raquo;
-                        </a></p>
+                            More &raquo;</a></p>
                     </div>
                 </div>
             </div> <!-- End of media object -->
@@ -178,11 +177,60 @@
                         <h4>Executive Chef</h4>
                         <p>Award winning three-star Michelin chef with wide International experience having worked closely with whos-who in the culinary world, he specializes in creating mouthwatering Indo-Italian fusion experiences.</p>
                         <p><a class="btn btn-primary btn-xs" href="#">
-                            More &raquo;
-                        </a></p>
+                            More &raquo;</a></p>
                     </div>
                 </div>
             </div> <!-- End of media object -->
+        </div>
+        
+        <!-- Form to reserve a table -->
+        <div class="row row-content">
+            <div class="col-xs-12 col-sm-3">
+                <p style="padding:20px;"></p>
+                <h3 align=center>Reserve a Table</h3>
+            </div>
+            <div class="col-xs-12 col-sm-9" id="reserve-form">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label for="guests" class="col-sm-2 control-label">Number of Guests</label>
+                        <div class="col-sm-10">
+                            <label class="radio-inline"><input type="radio" id="guests" name="guests" value="1">1</label>
+                            <label class="radio-inline"><input type="radio" id="guests" name="guests" value="2">2</label>
+                            <label class="radio-inline"><input type="radio" id="guests" name="guests" value="3">3</label>
+                            <label class="radio-inline"><input type="radio" id="guests" name="guests" value="4">4</label>
+                            <label class="radio-inline"><input type="radio" id="guests" name="guests" value="5">5</label>
+                            <label class="radio-inline"><input type="radio" id="guests" name="guests" value="6">6</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="telnum" class="control-label col-xs-12 col-sm-2">Date and Time</label>
+                        <div class="col-xs-6 col-sm-3 has-feedback">
+                            <input type="date" class="form-control"
+                                   id="inputdate" name="inputdate" placeholder="Date">
+                            <span class="glyphicon glyphicon-calendar form-control-feedback"></span>
+                        </div>
+                        <div class="col-xs-6 col-sm-3 col-sm-push-1 has-feedback">
+                            <input type="time" class="form-control"
+                                   id="inputtime" name="inputtime" placeholder="Time">
+                            <span class="glyphicon glyphicon-time form-control-feedback"></span>
+                        </div>
+                    </div>
+                    <!-- Adding the Submit Button -->
+                    <div class="form-group">
+                        <div class="col-sm-10 col-sm-offset-2">
+                            <button type="submit" class="btn btn-primary">
+                                Reserve</button>
+                        </div>
+                    </div> <!-- End of the Submit Button -->
+                    <!-- Dismissible alerts -->
+                    <div class="alert alert-warning alert-dismissable" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                        <strong>Warning</strong> Pleasae <a href="tel:+85212345678" class="alert-link">call</a> us to reserve for more than six guests.
+                    </div>
+                    <!-- End Dismissible alerts -->
+                </form>
+            </div>
         </div>
     </div>
 
