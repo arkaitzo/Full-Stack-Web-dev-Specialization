@@ -76,24 +76,48 @@
                     <li><a href="contactus.html">
                         <i class="fa fa-envelope-o"></i> Contact</a></li>
                 </ul>
-                <!-- Log In form -->
-                <form class="navbar-form navbar-right" role="form">
-                    <div class="form-group">
-                        <label for="email" class="sr-only">Email</label>
-                        <input type="email" id="email" name="email"
-                               class="form-control" placeholder="Email">
-                        <label for="password" class="sr-only">Password</label>
-                        <input type="password" id="password" name="password"
-                               class="form-control" placeholder="Password">
-                        <label for="remember" class="sr-only">Remember Password</label>
-                        <input type="checkbox" id="remember" name="remember" value="">
-                            <span style="color:white">Remember me</span>
-                        <button type="submit" class="btn btn-info">Sign In</button>
-                    </div>
-                </form> <!-- End of Log In form -->
+                <!-- Login linked to the Modal -->
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a data-toggle="modal" data-target="#loginModal">
+                        <span class="glyphicon glyphicon-log-in"></span>
+                        Login</a>
+                    </li>
+                </ul> <!-- End of the Login -->
             </div> <!-- Added for responsive navbar -->
         </div>
     </nav>
+    
+    <!-- Adding a Modal -->
+    <div id="loginModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Login</h4>
+                </div>
+                <div class="modal-body">
+                    <!-- Log In form -->
+                    <form class="form-inline" role="form">
+                        <div class="form-group">
+                            <label for="email" class="sr-only">Email</label>
+                            <input type="email" id="email" name="email"
+                                   class="form-control input-sm" placeholder="Email">
+                            <label for="password" class="sr-only">Password</label>
+                            <input type="password" id="password" name="password"
+                                   class="form-control input-sm" placeholder="Password">
+                            <label for="remember" class="sr-only">Remember Password</label>
+                            <input type="checkbox" id="remember" name="remember" value="">
+                                <span>Remember me</span>
+                            <button type="submit" class="btn btn-info btn-sm">Sign In</button>
+                            <button type="button" class="btn btn-default btn-sm"
+                                    data-dismiss="modal">Cancel</button>
+                        </div>
+                    </form> <!-- End of Log In form -->
+                </div>
+            </div>
+        </div>
+    </div> <!-- End of Modal -->
 
     <!-- Header of the web page -->
     <header class="jumbotron">
