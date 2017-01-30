@@ -75,3 +75,8 @@ body {
     border-bottom: 1px solid #DDD;
     padding: 10px;
 }
+
+/* Styling the Affix (+Scrollspy) */
+.affix {
+    top: 100px;
+}
