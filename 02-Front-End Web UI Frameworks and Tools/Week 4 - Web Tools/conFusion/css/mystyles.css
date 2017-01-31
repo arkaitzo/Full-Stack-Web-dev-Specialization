@@ -98,3 +98,10 @@ body {
 /* Activate for taking a screenshot of the entire page with the Modal ON... */
 /* ... using Google Chrome's 'Full Page Screen Capture' extension */
 /* .modal { position: absolute; } */
+
+/* Positioning the Carousel Buttons */
+#carouselButtons {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+}
