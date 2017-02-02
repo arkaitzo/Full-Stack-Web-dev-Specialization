@@ -78,7 +78,7 @@
                 </ul>
                 <!-- Login linked to the Modal -->
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a>
+                    <li><a id="login-button">
                         <span class="glyphicon glyphicon-log-in"></span>
                         Login</a>
                     </li>
@@ -439,11 +439,14 @@
             });
         });
     </script>
-    <!-- JavaScript to toggle the 'reserveModal' -->
+    <!-- JavaScript to toggle the 'reserveModal' and the 'loginModal' -->
     <script>
         $(document).ready(function() {
             $("#reserve-button").click(function() {
                 $("#reserveModal").modal("show")
+            });
+            $("#login-button").click(function() {
+                $("#loginModal").modal("show")
             });
         });
     </script>
