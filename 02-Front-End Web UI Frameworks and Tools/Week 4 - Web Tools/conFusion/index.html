@@ -214,7 +214,7 @@
                 <div class="col-xs-12 col-sm-2">
                     <p style="padding:40px;"></p>
                     <!-- Reserve button linked to a Modal -->
-                    <a type="button" class="btn btn-warning btn-block">
+                    <a id="reserve-button" type="button" class="btn btn-warning btn-block">
                         Reserve Table</a>
                 </div> <!-- End of "Reserve Table" Button -->
             </div>
@@ -436,6 +436,14 @@
             });
             $("#carousel-play").click(function() {
                 $("#myCarousel").carousel('cycle');
+            });
+        });
+    </script>
+    <!-- JavaScript to toggle the 'reserveModal' -->
+    <script>
+        $(document).ready(function() {
+            $("#reserve-button").click(function() {
+                $("#reserveModal").modal("show")
             });
         });
     </script>
