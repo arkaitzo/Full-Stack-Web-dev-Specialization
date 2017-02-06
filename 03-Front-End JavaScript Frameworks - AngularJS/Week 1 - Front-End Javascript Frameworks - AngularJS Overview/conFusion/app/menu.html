@@ -30,17 +30,17 @@
         <!-- menuController will be the controller for this div (with the alias menuCtrl) -->
             <div class="col-xs-12">
                 <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation">
-                        <a aria-controls="all menu" role="tab">The Menu</a>
+                    <li role="presentation" ng-class="{active:menuCtrl.isSelected(1)}">
+                        <a ng-click="menuCtrl.select(1)" aria-controls="all menu" role="tab">The Menu</a>
                     </li>
-                    <li role="presentation">
-                        <a aria-controls="appetizers" role="tab">Appetizers</a>
+                    <li role="presentation" ng-class="{active:menuCtrl.isSelected(2)}">
+                        <a ng-click="menuCtrl.select(2)" aria-controls="appetizers" role="tab">Appetizers</a>
                     </li>
-                    <li role="presentation">
-                        <a aria-controls="mains" role="tab">Mains</a>
+                    <li role="presentation" ng-class="{active:menuCtrl.isSelected(3)}">
+                        <a ng-click="menuCtrl.select(3)" aria-controls="mains" role="tab">Mains</a>
                     </li>
-                    <li role="presentation">
-                        <a aria-controls="desserts" role="tab">Desserts</a>
+                    <li role="presentation" ng-class="{active:menuCtrl.isSelected(4)}">
+                        <a ng-click="menuCtrl.select(4)" aria-controls="desserts" role="tab">Desserts</a>
                     </li>
                 </ul>
                 <div class="tab-content">
@@ -71,6 +71,8 @@
         var app = angular.module("confusionApp",[]);
         // Adding a Controller to this app
         app.controller("menuController", function() {
+            this.tab = 1;
+            
             var dishes = [
                 {
                     name:'Uthapizza',
@@ -110,6 +112,16 @@
                 }
                 ];
             this.dishes = dishes; // Making dishes object available to the HTML code
+            
+            // Implementing the select() function
+            this.select = function(setTab) {
+                this.tab = setTab;
+            };
+            
+            // Implementing the isSelected() function
+            this.isSelected = function(checkTab) {
+                return (this.tab === checkTab);
+            };
         });
     </script>
 
