@@ -49,13 +49,13 @@ angular.module("confusionApp",[]).controller("menuController", function() {
 
         // filtText
         if (setTab === 2)
-            this.filtText = "appetizer";
+            {this.filtText = "appetizer";}
         else if (setTab === 3)
-            this.filtText = "mains";
+            {this.filtText = "mains";}
         else if (setTab === 4)
-            this.filtText = "dessert";
+            {this.filtText = "dessert";}
         else
-            this.filtText = "";
+            {this.filtText = "";}
     };
 
     // Implementing the isSelected() function
