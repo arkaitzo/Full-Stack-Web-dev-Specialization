@@ -2,6 +2,7 @@
   "name": "conFusion",
   "private": true,
   "devDependencies": {
+    "gulp": "^3.9.1"
   },
   "engines": {
     "node": ">=0.10.0"
