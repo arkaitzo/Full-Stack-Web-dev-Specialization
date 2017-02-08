@@ -32,6 +32,11 @@
         <div class="row row-content" ng-controller="MenuController">
         <!-- menuController will be the controller for this div (with the alias menuCtrl) -->
             <div class="col-xs-12">
+                <!-- Button for using with 'ng-show' (see in dish.description) -->
+                <button type="button" class="btn btn-xs- btn-primary pull-right"
+                        ng-click="toggleDetails()">
+                    {{showDetails ? "Hide Details":"Show Details"}}
+                </button> <!-- End of button -->
                 <ul class="nav nav-tabs" role="tablist">
                     <li role="presentation" ng-class="{active:isSelected(1)}">
                         <a ng-click="select(1)" aria-controls="all menu" role="tab">The Menu</a>
@@ -59,7 +64,7 @@
                                 <h2 class="media-heading">{{dish.name}}
                                  <span class="label label-danger">{{dish.label}}</span>
                                  <span class="badge">{{dish.price | currency}}</span></h2> <!-- Using the currency filter -->
-                                <p>{{dish.description}}</p>
+                                <p ng-show="showDetails">{{dish.description}}</p>
                             </div>
                         </li>
                     </ul>

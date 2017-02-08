@@ -2,6 +2,7 @@
 angular.module("confusionApp",[]).controller("MenuController", ["$scope", function($scope) {
     $scope.tab = 1;
     $scope.filtText = "";
+    $scope.showDetails = false; // Variable to be used in toggleDetails() (implemented below)
 
     $scope.dishes = [
         {
@@ -62,5 +63,10 @@ angular.module("confusionApp",[]).controller("MenuController", ["$scope", functi
     // Implementing the isSelected() function
     $scope.isSelected = function(checkTab) {
         return ($scope.tab === checkTab);
+    };
+    
+    // Implementing the toggleDetails() function
+    $scope.toggleDetails = function() {
+        $scope.showDetails = !$scope.showDetails;
     };
 }]);
