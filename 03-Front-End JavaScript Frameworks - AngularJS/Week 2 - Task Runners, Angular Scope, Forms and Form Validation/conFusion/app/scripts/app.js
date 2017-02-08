@@ -73,8 +73,8 @@ angular.module("confusionApp",[]).controller("MenuController", ["$scope", functi
 
     .controller("ContactController", ["$scope", function($scope) {
         // This object will be also accesible by FeedbackController (because ContactController is its parent)
-        $scope.feedback = {mychannel:"", firstname:"",
-                          lastname:"", agree:false, email:""};
+        $scope.feedback = {mychannel:"", firstName:"",
+                          lastName:"", agree:false, email:""};
 }])
 
     .controller("FeedbackController", ["$scope", function($scope) {
