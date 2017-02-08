@@ -75,9 +75,27 @@ angular.module("confusionApp",[]).controller("MenuController", ["$scope", functi
         // This object will be also accesible by FeedbackController (because ContactController is its parent)
         $scope.feedback = {mychannel:"", firstName:"",
                           lastName:"", agree:false, email:""};
+        
+        var channels = [{value:"tel", label:"Tel."}, {value:"email",label:"Email"}]; // Value: Email or email?
+        $scope.channels = channels;
+        $scope.invalidChannelSelection = false;
 }])
 
     .controller("FeedbackController", ["$scope", function($scope) {
-    
+        $scope.sendFeedback = function() {
+            console.log($scope.feedback);
+            if ($scope.feedback.agree && ($scope.feedback.mychannel == "") && !$scope.feedback.mychannel) {
+                $scope.invalidChannelSelection = true;
+                console.log('incorrect');
+            }
+            else {
+                $scope.invalidChannelSelection = false;
+                $scope.feedback = {mychannel:"", firstName:"", lastName:"",
+                                   agree:false, email:"" };
+                $scope.feedback.mychannel="";
+                $scope.feedbackForm.$setPristine();
+                console.log($scope.feedback);
+            }
+        };
 }])
 ;
