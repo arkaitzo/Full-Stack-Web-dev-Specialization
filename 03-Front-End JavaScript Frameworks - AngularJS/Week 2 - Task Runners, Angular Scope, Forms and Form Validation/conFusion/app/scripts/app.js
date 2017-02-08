@@ -1,9 +1,9 @@
 "use strict";
-angular.module("confusionApp",[]).controller("menuController", function() {
-    this.tab = 1;
-    this.filtText = "";
+angular.module("confusionApp",[]).controller("MenuController", ["$scope", function($scope) {
+    $scope.tab = 1;
+    $scope.filtText = "";
 
-    var dishes = [
+    $scope.dishes = [
         {
             name:'Uthapizza',
             image: 'images/uthapizza.png',
@@ -41,25 +41,26 @@ angular.module("confusionApp",[]).controller("menuController", function() {
             comment: ''
         }
         ];
-    this.dishes = dishes; // Making dishes object available to the HTML code
+    //this.dishes = dishes; // Making dishes object available to the HTML code
+    // (No longer necessary once you have defined $scope.dishes)
 
     // Implementing the select() function
-    this.select = function(setTab) {
-        this.tab = setTab;
+    $scope.select = function(setTab) {
+        $scope.tab = setTab;
 
         // filtText
         if (setTab === 2)
-            {this.filtText = "appetizer";}
+            {$scope.filtText = "appetizer";}
         else if (setTab === 3)
-            {this.filtText = "mains";}
+            {$scope.filtText = "mains";}
         else if (setTab === 4)
-            {this.filtText = "dessert";}
+            {$scope.filtText = "dessert";}
         else
-            {this.filtText = "";}
+            {$scope.filtText = "";}
     };
 
     // Implementing the isSelected() function
-    this.isSelected = function(checkTab) {
-        return (this.tab === checkTab);
+    $scope.isSelected = function(checkTab) {
+        return ($scope.tab === checkTab);
     };
-});
+}]);
