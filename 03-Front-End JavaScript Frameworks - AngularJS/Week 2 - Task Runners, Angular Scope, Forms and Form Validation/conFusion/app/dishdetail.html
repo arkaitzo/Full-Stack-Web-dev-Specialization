@@ -62,9 +62,9 @@
             </div>
             <div class="col-xs-9 col-xs-offset-1" ng-controller="DishCommentController">
                 <!-- Task 3 -->
-                <ul class="list-unstyled">
+                <ul class="list-unstyled" ng-show="commentForm.$valid && !commentForm.$pristine">
                     <li>
-                        <blockquote ng-show="commentForm.$valid && !commentForm.$pristine">
+                        <blockquote>
                             <p>{{comment.rating}} Stars</p>
                             <p>{{comment.comment}}</p>
                             <footer>{{comment.author}}</footer>
