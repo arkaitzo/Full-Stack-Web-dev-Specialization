@@ -1,11 +1,8 @@
 "use strict";
 
 angular.module("confusionApp")
-    .factory("menuFactory", function() {
+    .service("menuFactory", function() {
         
-        // Declare an empty object (needed when defining a 'factory')
-        var menufac = {};
-    
         // Data object (that controllerS will access)
         var dishes=[
             {
@@ -171,13 +168,10 @@ angular.module("confusionApp")
         ];
     
         // Attaching functions to the "manufact" object
-        menufac.getDishes = function(){
+        this.getDishes = function(){
             return dishes; // Return the entire "dishes" object (the array containing all the dishes)
         };
-        menufac.getDish = function(index) {
+        this.getDish = function(index) {
             return dishes[index]; // Return a specific "dish" object from the JS array "dishes"
         };
-    
-        // Returning the object (that contains the functions)
-        return menufac; // I could now inject this service into the controllers that need the data
     });
