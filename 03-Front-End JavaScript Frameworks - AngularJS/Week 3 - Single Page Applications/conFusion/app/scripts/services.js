@@ -186,26 +186,23 @@ angular.module('confusionApp')
                 
             ];
     
-                this.getDishes = function(){
-                    
+                this.getDishes = function() {
                     return dishes;
-                    
                 };
-    
-                this.getDish = function (index) {
-                    
+                this.getDish = function(index) {
                     return dishes[index];
                 };
     
                 // implement a function named getPromotion
-                // that returns a selected promotion.
-    
-                        
+                // that returns a selected promotion.   
+                this.getPromotion = function(index) {
+                    return promotions[index];
+                };
         })
 
         .factory('corporateFactory', function() {
     
-            var corpfac = {};
+            var corpfac = {}; // Empty object (needed when defining a 'factory')
     
             var leadership = [
                 {
@@ -239,11 +236,19 @@ angular.module('confusionApp')
                 
             ];
      
-            // Implement two functions, one named getLeaders,
-            // the other named getLeader(index)
-            // Remember this is a factory not a service
+            /* Implement two functions, one named getLeaders,
+            the other named getLeader(index)
+            *** REMEMBER THIS IS A FACTORY NOT A SERVICE ***/
+            // Attaching functions to the "corpfac" object
+            corpfac.getLeaders = function() {
+                return leadership;
+            };
+            corpfac.getLeader = function(index) {
+                return leadership[index];
+            };
     
-    
+            // Returning the object (that contains both functions)
+            return corpfac;
         })
 
 ;
