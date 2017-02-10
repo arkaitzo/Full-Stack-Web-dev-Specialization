@@ -63,10 +63,10 @@ angular.module("confusionApp")
         };
     }])
 
-    .controller('DishDetailController', ["$scope", "$routeParams", "menuFactory",
-                                         function($scope, $routeParams, menuFactory) {
+    .controller('DishDetailController', ["$scope", "$stateParams", "menuFactory",
+                                         function($scope, $stateParams, menuFactory) {
         // Call the getDish() method of the menuFactory to get the dish object needed and put it onto my $scope
-        $scope.dish = menuFactory.getDish(parseInt($routeParams.id,10)); // Base 10 number system
+        $scope.dish = menuFactory.getDish(parseInt($stateParams.id,10)); // Base 10 number system
     }])
 
     .controller('DishCommentController', ["$scope", function($scope) {
