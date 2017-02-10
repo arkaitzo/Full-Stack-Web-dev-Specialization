@@ -63,9 +63,10 @@ angular.module("confusionApp")
         };
     }])
 
-    .controller('DishDetailController', ["$scope", "menuFactory", function($scope, menuFactory) {
+    .controller('DishDetailController', ["$scope", "$routeParams", "menuFactory",
+                                         function($scope, $routeParams, menuFactory) {
         // Call the getDish() method of the menuFactory to get the dish object needed and put it onto my $scope
-        $scope.dish= menuFactory.getDish(3); // First inject the service into DishDetailController (Dependency Injection)
+        $scope.dish = menuFactory.getDish(parseInt($routeParams.id,10)); // Base 10 number system
     }])
 
     .controller('DishCommentController', ["$scope", function($scope) {
