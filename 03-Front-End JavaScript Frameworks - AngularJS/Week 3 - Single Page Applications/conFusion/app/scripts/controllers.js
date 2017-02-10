@@ -103,6 +103,6 @@ angular.module('confusionApp')
 
         // ... and the "AboutController" here
         .controller("AboutController", ["$scope", "corporateFactory", function($scope, corporateFactory) {
-            $scope.dishes = menuFactory.getDishes();
+            $scope.leaders = corporateFactory.getLeaders();
         }])
 ;
