@@ -8,7 +8,7 @@ angular.module('confusionApp')
             $scope.filtText = '';
             $scope.showDetails = false;
 
-            $scope.dishes= menuFactory.getDishes();
+            $scope.dishes = menuFactory.getDishes();
 
                         
             $scope.select = function(setTab) {
@@ -92,5 +92,17 @@ angular.module('confusionApp')
                 
                 $scope.mycomment = {rating:5, comment:"", author:"", date:""};
             }
+        }])
+
+        // implement the "IndexController"...
+        .controller("IndexController", ["$scope", "menuFactory", "corporateFactory", function($scope, menuFactory, corporateFactory) {
+            $scope.featuredDish = menuFactory.getDish(0);
+            $scope.promotionDish = menuFactory.getPromotion(0);
+            $scope.executiveChef = corporateFactory.getLeader(3);
+        }])
+
+        // ... and the "AboutController" here
+        .controller("AboutController", ["$scope", "corporateFactory", function($scope, corporateFactory) {
+            $scope.dishes = menuFactory.getDishes();
         }])
 ;
