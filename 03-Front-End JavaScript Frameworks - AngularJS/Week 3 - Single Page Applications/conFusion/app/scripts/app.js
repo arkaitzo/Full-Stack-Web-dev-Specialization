@@ -56,7 +56,8 @@ angular.module("confusionApp",["ui.router"])
             url:'aboutus',
             views: {
                 'content@': {
-                    template: '<h1>To be Completed</h1>'
+                    template: '<h1>To be Completed</h1>',
+                    controller  : 'AboutController'
                }
             }
         })
