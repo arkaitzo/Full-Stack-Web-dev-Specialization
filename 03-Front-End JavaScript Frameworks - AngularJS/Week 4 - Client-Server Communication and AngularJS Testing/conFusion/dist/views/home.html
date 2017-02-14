@@ -6,8 +6,12 @@
                 <h3 align=center>Our Lipsmacking Culinary Creations</h3>
             </div>
             <div class="col-xs-12 col-sm-9 col-sm-pull-3">
+                <div ng-if="!showDish">
+                    <!-- Note the use of the ngIf directive in order to add/delete the div from the DOM -->
+                    <h3>{{message}}</h3>
+                </div>
 				<!-- Featured Dish -->
-                <div class="media">
+                <div class="media" ng-if="showDish">
                     <div class="media-left media-middle">
                         <img class="media-object img-thumbnail"
                          ng-src={{featuredDish.image}} title={{featuredDish.name}}>

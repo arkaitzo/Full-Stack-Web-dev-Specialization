@@ -3,8 +3,11 @@
 
     <div class="container">
         <div class="row row-content" ng-controller="MenuController">
-        <!-- menuController will be the controller for this div (with the alias menuCtrl) -->
-            <div class="col-xs-12">
+            <div class="col-xs-12" ng-if="!showMenu">
+                <!-- Note the use of the ngIf directive in order to add/delete the div from the DOM -->
+                <h3>{{message}}</h3>
+            </div>
+            <div class="col-xs-12" ng-if="showMenu">
                 <!-- Button for using with 'ng-show' (see in dish.description) -->
                 <button type="button" class="btn btn-xs- btn-primary pull-right"
                         ng-click="toggleDetails()">
