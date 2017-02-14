@@ -99,9 +99,9 @@ angular.module('confusionApp')
             );
         }])
 
-        .controller('DishCommentController', ['$scope', function($scope) {
+        .controller('DishCommentController', ['$scope', 'menuFactory', function($scope, menuFactory) {
             
-            $scope.mycomment = {rating:5, comment:"", author:"", date:""};
+            $scope.mycomment = {rating:"5", comment:"", author:"", date:""};
             
             $scope.submitComment = function () {
                 
@@ -111,9 +111,11 @@ angular.module('confusionApp')
                 $scope.mycomment.rating = Number($scope.mycomment.rating);
                 $scope.dish.comments.push($scope.mycomment);
                 
-                $scope.commentForm.$setPristine();
+                // Store the updated dish object (with the new comment) in the server
+                menuFactory.getDishes().update({id:$scope.dish.id}, $scope.dish);
                 
-                $scope.mycomment = {rating:5, comment:"", author:"", date:""};
+                $scope.commentForm.$setPristine();
+                $scope.mycomment = {rating:"5", comment:"", author:"", date:""};
             };
         }])
 

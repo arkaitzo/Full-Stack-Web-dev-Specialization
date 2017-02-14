@@ -20,7 +20,7 @@ angular.module('confusionApp')
                 // Fetch the data from the server - $resource(url, [paramDefaults], [actions], options);
                 return $resource(baseURL + "dishes/:id",
                                 null,
-                                {"update":{method:"PUT"}});
+                                {"update":{method:"PUT"}}); // We supply the parameter "update" to perform a PUT call (that in REST it means to update an existing object)
             };
 
             // implement a function named getPromotion
