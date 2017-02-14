@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="confusionApp">
 
-    <div class="container" ng-controller="DishDetailController">
-        <div class="row row-content">
-            <div class="col-xs-12">
+    <div class="container">
+        <div class="row row-content" ng-controller="DishDetailController">
+            <div class="col-xs-12" ng-if="!showDish">
+                <!-- Note the use of the ngIf directive in order to add/delete the div from the DOM -->
+                <h3>{{message}}</h3>
+            </div>
+            <div class="col-xs-12" ng-if="showDish">
                 <!-- Back to Menu Button -->
                 <button type="button"
                         class="btn btn-xs btn-primary pull-right"
