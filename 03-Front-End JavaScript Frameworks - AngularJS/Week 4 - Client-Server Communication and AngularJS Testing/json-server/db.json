@@ -254,6 +254,19 @@
       },
       "comments": "Uhm, unlike my sons I didn't like it... sorry!",
       "id": 3
+    },
+    {
+      "mychannel": "telephone",
+      "firstName": "Arkaitz",
+      "lastName": "Etxezarreta",
+      "agree": true,
+      "email": "arkaitz@confusion.com",
+      "tel": {
+        "areaCode": "945",
+        "number": "123 4567"
+      },
+      "comments": "It seems this worked! =)",
+      "id": 4
     }
   ]
 }
