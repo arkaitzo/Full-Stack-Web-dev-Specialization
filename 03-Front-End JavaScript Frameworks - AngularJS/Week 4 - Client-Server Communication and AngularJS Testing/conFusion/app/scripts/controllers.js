@@ -122,10 +122,9 @@ angular.module('confusionApp')
         // implement the "IndexController"...
         .controller("IndexController", ["$scope", "menuFactory", "corporateFactory", function($scope, menuFactory, corporateFactory) {
             
-            $scope.showDish = false;
-            $scope.message="Loading ...";
-            
             // Returning a specific dish
+            $scope.showDish = false;
+            $scope.message = "Loading ...";
             $scope.featuredDish = menuFactory.getDishes().get({id:0})
             .$promise.then(
                 function(response) {
@@ -137,7 +136,21 @@ angular.module('confusionApp')
                 }
             );
             
-            $scope.promotionDish = menuFactory.getPromotion(0);
+            // Returning a specific dish
+            $scope.showPromotion = false;
+            $scope.messagePromotion = "Loading ...";
+            $scope.promotionDish = menuFactory.getPromotion().get({id:0})
+            .$promise.then(
+                function(response) {
+                    $scope.promotionDish = response;
+                    $scope.showPromotion = true;
+                },
+                function(response) {
+                    $scope.messagePromotion = "Error: " + response.status + " " + response.statusText;
+                }
+            );
+            
+            // Returning the Executive Chef info
             $scope.executiveChef = corporateFactory.getLeader(3);
         }])
 

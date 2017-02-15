@@ -4,18 +4,6 @@ angular.module('confusionApp')
         .constant("baseURL", "http://localhost:3000/") // If you change your server, come here and update this baseURL
         .service('menuFactory', ["$resource", "baseURL", function($resource, baseURL) {
     
-            var promotions = [
-                {
-                _id:0,
-                name:'Weekend Grand Buffet', 
-                image: 'images/buffet.png',
-                label:'New',
-                price:'19.99',
-                description:'Featuring mouthwatering combinations with a choice of five different salads, six enticing appetizers, six main entrees and five choicest desserts. Free flowing bubbly and soft drinks. All for just $19.99 per person ',
-                }
-                
-            ];
-    
             this.getDishes = function() {
                 // Fetch the data from the server - $resource(url, [paramDefaults], [actions], options);
                 return $resource(baseURL + "dishes/:id",
@@ -25,8 +13,9 @@ angular.module('confusionApp')
 
             // implement a function named getPromotion
             // that returns a selected promotion.   
-            this.getPromotion = function(index) {
-                return promotions[index];
+            this.getPromotion = function() {
+                return $resource(baseURL + "promotions/:id");
+                // This time we do not need to supply the parameter "update"
             };
         }])
 
