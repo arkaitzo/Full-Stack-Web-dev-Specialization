@@ -4,9 +4,7 @@ Assignment 3
 
 ----------
 ### **services.js**
-
 _Copy and paste the code showing the implementation of the **getLeaders()** and the **getLeader()** functions in **services.js**:_
-
 ```
 // Attaching functions to the "corpfac" object
 corpfac.getLeaders = function() {
@@ -19,9 +17,16 @@ corpfac.getLeader = function(index) {
 // Returning the object (that contains both functions)
 return corpfac;
 ```
+
+_Copy and paste the code for the **getPromotion()** function_
+```
+this.getPromotion = function(index) {
+	return promotions[index];
+};
+```
+
 ----------
 ### **controllers.js**
-
 _Copy and paste the code for the **IndexController** function:_
 ```
 .controller("IndexController", ["$scope", "menuFactory", "corporateFactory", function($scope, menuFactory, corporateFactory) {
@@ -37,6 +42,7 @@ _Copy and paste the code for the **AboutController** function:_
 	$scope.leaders = corporateFactory.getLeaders();
 }])
 ```
+
 ----------
 ### **aboutus.html**
 _Copy and paste the code from **aboutus.html** that constructs the information for the corporate leaders:_
@@ -55,6 +61,7 @@ _Copy and paste the code from **aboutus.html** that constructs the information f
 </li>
 <!-- End of Leaders List -->
 ```
+
 ----------
 ### **home.html**
 _Copy and paste the code (the media objects) from **home.html** that constructs the information for the featured dish, featured promotion and executive chef:_
@@ -103,5 +110,6 @@ _Copy and paste the code (the media objects) from **home.html** that constructs 
 </div>
 <!-- End of Executive Chef Info -->
 ```
+
 ----------
 > **Author:** Arkaitz Etxezarreta [Linkedin](https://www.linkedin.com/in/aetxezarreta "Arkaitz's Linkedin Profile") | [Github](https://github.com/arkaitzo "Arkaitz's Github Profile")
