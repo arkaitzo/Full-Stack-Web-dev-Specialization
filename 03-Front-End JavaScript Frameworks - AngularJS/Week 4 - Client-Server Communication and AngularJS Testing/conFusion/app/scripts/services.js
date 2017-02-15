@@ -30,4 +30,12 @@ angular.module('confusionApp')
             // Returning the object (that contains both functions)
             return corpfac;
         }])
+
+        .service('feedbackFactory', ["$resource", "baseURL", function($resource, baseURL) {
+            this.getFeedback = function() {
+                return $resource(baseURL + "feedback/",
+                                null,
+                                {"save":{method:"POST"}}); // We supply the parameter "save" to perform a POST call (that in REST it means to create a new object)
+            };
+        }])
 ;

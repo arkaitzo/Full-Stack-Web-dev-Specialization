@@ -54,14 +54,14 @@ angular.module('confusionApp')
 
             $scope.feedback = {mychannel:"", firstName:"", lastName:"", agree:false, email:"" };
             
-            var channels = [{value:"tel", label:"Tel."}, {value:"Email",label:"Email"}];
+            var channels = [{value:"telephone", label:"Telephone"}, {value:"email",label:"Email"}];
             
             $scope.channels = channels;
             $scope.invalidChannelSelection = false;
                         
         }])
 
-        .controller('FeedbackController', ['$scope', function($scope) {
+        .controller('FeedbackController', ['$scope', 'feedbackFactory', function($scope, feedbackFactory) {
             
             $scope.sendFeedback = function() {
                 
@@ -73,8 +73,11 @@ angular.module('confusionApp')
                 }
                 else {
                     $scope.invalidChannelSelection = false;
+                    
+                    // Store the feedback object in the server
+                    feedbackFactory.getFeedback().save($scope.feedback);
+                    
                     $scope.feedback = {mychannel:"", firstName:"", lastName:"", agree:false, email:"" };
-                    $scope.feedback.mychannel="";
                     $scope.feedbackForm.$setPristine();
                     console.log($scope.feedback);
                 }
