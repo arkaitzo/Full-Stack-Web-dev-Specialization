@@ -127,35 +127,65 @@ angular.module('confusionApp')
             $scope.message = "Loading ...";
             $scope.featuredDish = menuFactory.getDishes().get({id:0})
             .$promise.then(
+                // Success function + Success and Error functions
                 function(response) {
-                    $scope.featuredDish = response;
+                    $scope.featuredDish = response; // 'response' is the actual data in case of success
                     $scope.showDish = true;
                 },
+                // Error function
                 function(response) {
                     $scope.message = "Error: " + response.status + " " + response.statusText;
                 }
             );
             
-            // Returning a specific dish
+            // Returning a specific promotional dish + Success and Error functions
             $scope.showPromotion = false;
             $scope.messagePromotion = "Loading ...";
             $scope.promotionDish = menuFactory.getPromotion().get({id:0})
             .$promise.then(
+                // Success function
                 function(response) {
-                    $scope.promotionDish = response;
+                    $scope.promotionDish = response; // 'response' is the actual data in case of success
                     $scope.showPromotion = true;
                 },
+                // Error function
                 function(response) {
                     $scope.messagePromotion = "Error: " + response.status + " " + response.statusText;
                 }
             );
             
-            // Returning the Executive Chef info
-            $scope.executiveChef = corporateFactory.getLeader(3);
+            // Returning the Executive Chef info + Success and Error functions
+            $scope.showLeader = false;
+            $scope.messageLeader = "Loading ...";
+            $scope.executiveChef = corporateFactory.getLeaders().get({id:3})
+            .$promise.then(
+                // Success function
+                function(response) {
+                    $scope.executiveChef = response; // 'response' is the actual data in case of success
+                    $scope.showLeader = true;
+                },
+                // Error function
+                function(response) {
+                    $scope.messageLeader = "Error: " + response.status + " " + response.statusText;
+                }
+            );
         }])
 
         // ... and the "AboutController" here
         .controller("AboutController", ["$scope", "corporateFactory", function($scope, corporateFactory) {
-            $scope.leaders = corporateFactory.getLeaders();
+            // Returning all the leaders available + Success and Error functions
+            $scope.showLeaders = false;
+            $scope.messageLeaders = "Loading ...";
+            corporateFactory.getLeaders().query(
+                // Success function
+                function(response) {
+                    $scope.leaders = response; // 'response' is the actual data in case of success
+                    $scope.showLeaders = true;
+                },
+                // Error function
+                function(response) {
+                    $scope.messageLeaders = "Error: " + response.status + " " + response.statusText;
+                }
+            );
         }])
 ;
