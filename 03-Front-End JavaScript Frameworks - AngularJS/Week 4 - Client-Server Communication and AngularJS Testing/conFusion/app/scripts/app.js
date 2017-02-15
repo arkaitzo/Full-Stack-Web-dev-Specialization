@@ -1,9 +1,13 @@
 'use strict';
 
 angular.module('confusionApp', ['ui.router','ngResource'])
-.config(function($stateProvider, $urlRouterProvider) {
-        $stateProvider
-        
+    .config(function($stateProvider, $urlRouterProvider) {
+    /*
+    If when E2E testing, you use browser.get('index.html#/menu/0'); in "scenarios.js"
+    .config(function($stateProvider, $urlRouterProvider, $locationProvider) {
+        $locationProvider.hashPrefix("");
+    */
+        $stateProvider    
             // route for the home page
             .state('app', {
                 url:'/',
@@ -21,7 +25,7 @@ angular.module('confusionApp', ['ui.router','ngResource'])
                 }
 
             })
-        
+
             // route for the aboutus page
             .state('app.aboutus', {
                 url:'aboutus',
@@ -32,7 +36,7 @@ angular.module('confusionApp', ['ui.router','ngResource'])
                     }
                 }
             })
-        
+
             // route for the contactus page
             .state('app.contactus', {
                 url:'contactus',
@@ -65,7 +69,7 @@ angular.module('confusionApp', ['ui.router','ngResource'])
                    }
                 }
             });
-    
+
         $urlRouterProvider.otherwise('/');
     })
 ;
