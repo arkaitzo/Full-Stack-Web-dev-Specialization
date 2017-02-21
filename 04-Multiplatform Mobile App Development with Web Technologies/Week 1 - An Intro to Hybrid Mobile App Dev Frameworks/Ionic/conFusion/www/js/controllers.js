@@ -157,54 +157,25 @@ angular.module('conFusion.controllers', [])
 }])
 
 // implement the "IndexController"...
-.controller("IndexController", ["$scope", "menuFactory", "corporateFactory", function($scope, menuFactory, corporateFactory) {
-    // Returning a specific dish
+.controller('IndexController', ['$scope', 'menuFactory', 'corporateFactory', 'baseURL', function($scope, menuFactory, corporateFactory, baseURL) {
+    $scope.baseURL = baseURL;
+    
+    $scope.leader = corporateFactory.get({id:3});
+    
     $scope.showDish = false;
-    $scope.message = "Loading ...";
-    $scope.featuredDish = menuFactory.getDishes().get({id:0})
+    $scope.message="Loading ...";
+    
+    $scope.dish = menuFactory.getDishes().get({id:0})
     .$promise.then(
-        // Success function + Success and Error functions
-        function(response) {
-            $scope.featuredDish = response; // 'response' is the actual data in case of success
+        function(response){
+            $scope.dish = response;
             $scope.showDish = true;
         },
-        // Error function
         function(response) {
-            $scope.message = "Error: " + response.status + " " + response.statusText;
+            $scope.message = "Error: "+response.status + " " + response.statusText;
         }
     );
-
-    // Returning a specific promotional dish + Success and Error functions
-    $scope.showPromotion = false;
-    $scope.messagePromotion = "Loading ...";
-    $scope.promotionDish = menuFactory.getPromotion().get({id:0})
-    .$promise.then(
-        // Success function
-        function(response) {
-            $scope.promotionDish = response; // 'response' is the actual data in case of success
-            $scope.showPromotion = true;
-        },
-        // Error function
-        function(response) {
-            $scope.messagePromotion = "Error: " + response.status + " " + response.statusText;
-        }
-    );
-
-    // Returning the Executive Chef info + Success and Error functions
-    $scope.showLeader = false;
-    $scope.messageLeader = "Loading ...";
-    $scope.executiveChef = corporateFactory.getLeaders().get({id:3})
-    .$promise.then(
-        // Success function
-        function(response) {
-            $scope.executiveChef = response; // 'response' is the actual data in case of success
-            $scope.showLeader = true;
-        },
-        // Error function
-        function(response) {
-            $scope.messageLeader = "Error: " + response.status + " " + response.statusText;
-        }
-    );
+    $scope.promotion = menuFactory.getPromotion().get({id:0});
 }])
 
 // ... and the "AboutController" here

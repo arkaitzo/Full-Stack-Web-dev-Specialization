@@ -20,15 +20,8 @@ angular.module('conFusion.services', ['ngResource'])
         }])
 
         .factory('corporateFactory', ["$resource", "baseURL", function($resource, baseURL) {
-            /*** REMEMBER THIS IS A FACTORY NOT A SERVICE ***/
-            var corpfac = {}; // Empty object (needed when defining a 'factory')
-            corpfac.getLeaders = function() {
-                return $resource(baseURL + "leadership/:id");
-                // This time we do not need to supply the parameter "update"
-            };
-    
-            // Returning the object (that contains both functions)
-            return corpfac;
+            // This way I can call corporateFactory directly (i.e.: corporateFactory.get({id:3}))
+            return $resource(baseURL+"leadership/:id");
         }])
 
         .service('feedbackFactory', ["$resource", "baseURL", function($resource, baseURL) {
