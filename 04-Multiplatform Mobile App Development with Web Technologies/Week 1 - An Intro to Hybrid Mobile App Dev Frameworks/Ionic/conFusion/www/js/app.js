@@ -4,7 +4,7 @@
 // 'conFusion' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'conFusion.controllers' is found in controllers.js
-angular.module('conFusion', ['ionic', 'conFusion.controllers'])
+angular.module('conFusion', ['ionic', 'conFusion.controllers', 'conFusion.services'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
