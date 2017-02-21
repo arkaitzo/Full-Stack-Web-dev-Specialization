@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('confusionApp')
+angular.module('conFusion.services', ['ngResource'])
         .constant("baseURL", "http://localhost:3000/") // If you change your server, come here and update this baseURL
         
         .service('menuFactory', ["$resource", "baseURL", function($resource, baseURL) {
