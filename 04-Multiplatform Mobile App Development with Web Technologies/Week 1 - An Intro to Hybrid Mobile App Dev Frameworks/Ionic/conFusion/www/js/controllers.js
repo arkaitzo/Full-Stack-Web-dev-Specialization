@@ -184,6 +184,7 @@ angular.module('conFusion.controllers', [])
 
 // ... and the "AboutController" here
 .controller("AboutController", ["$scope", "corporateFactory", function($scope, corporateFactory) {
+    
     // Returning all the leaders available + Success and Error functions
     $scope.showLeaders = false;
     $scope.messageLeaders = "Loading ...";
