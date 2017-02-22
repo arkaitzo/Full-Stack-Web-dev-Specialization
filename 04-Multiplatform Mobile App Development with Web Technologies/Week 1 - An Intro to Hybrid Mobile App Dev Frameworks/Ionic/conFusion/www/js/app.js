@@ -61,7 +61,7 @@ angular.module('conFusion', ['ionic', 'conFusion.controllers', 'conFusion.servic
       views: {
         'mainContent': {
           templateUrl: 'templates/menu.html',
-          controller: 'PlaylistsCtrl'
+          controller: 'MenuController'
         }
       }
   })
@@ -70,7 +70,7 @@ angular.module('conFusion', ['ionic', 'conFusion.controllers', 'conFusion.servic
     views: {
       'mainContent': {
         templateUrl: 'templates/dishdetail.html',
-        controller: ''
+        controller: 'DishDetailController'
       }
     }
   });
