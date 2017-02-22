@@ -183,22 +183,10 @@ angular.module('conFusion.controllers', [])
 }])
 
 // ... and the "AboutController" here
-.controller("AboutController", ["$scope", "corporateFactory", "baseURL", function($scope, corporateFactory, baseURL) {
+.controller('AboutController', ['$scope', 'corporateFactory', 'baseURL', function($scope, corporateFactory, baseURL) {
     $scope.baseURL = baseURL;
     
-    // Returning all the leaders available + Success and Error functions
-    $scope.showLeaders = false;
-    $scope.messageLeaders = "Loading ...";
-    corporateFactory.query(
-        // Success function
-        function(response) {
-            $scope.leaders = response; // 'response' is the actual data in case of success
-            $scope.showLeaders = true;
-        },
-        // Error function
-        function(response) {
-            $scope.messageLeaders = "Error: " + response.status + " " + response.statusText;
-        }
-    );
+    $scope.leaders = corporateFactory.query();
+    console.log($scope.leaders);
 }])
 ;
