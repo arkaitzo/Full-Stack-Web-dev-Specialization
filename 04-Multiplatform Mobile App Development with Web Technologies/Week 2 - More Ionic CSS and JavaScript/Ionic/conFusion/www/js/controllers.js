@@ -258,4 +258,18 @@ angular.module('conFusion.controllers', [])
         $scope.shouldShowDelete = false;
     }
 }])
+
+// Filter the favorite dishes - If you have various filters, it may be better to create a 'filters.js' file
+.filter('favoriteFilter', function () {
+    return function (dishes, favorites) {
+        var out = [];
+        // Linear search - With a large number of dishes and favorites, you should implement a much better way of doing this search (using computer algorithms)
+        for (var i = 0; i < favorites.length; i++) {
+            for (var j = 0; j < dishes.length; j++) {
+                if (dishes[j].id === favorites[i].id)
+                    out.push(dishes[j]);
+            }
+        }
+        return out;
+}});
 ;
