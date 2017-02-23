@@ -30,4 +30,19 @@ angular.module('conFusion.services', ['ngResource'])
                 // No need to supply the parameter "save" to perform a POST call (it's already implemented)
             };
         }])
+
+        .factory('favoriteFactory', ['$resource', 'baseURL', function ($resource, baseURL) {
+            var favFac = {};
+            var favorites = [];
+
+            favFac.addToFavorites = function (index) {
+                for (var i = 0; i < favorites.length; i++) {
+                    if (favorites[i].id == index)
+                        return;
+                }
+                favorites.push({id: index});
+            };
+
+            return favFac;
+        }])
 ;
