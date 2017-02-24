@@ -163,7 +163,7 @@ angular.module('conFusion.controllers', [])
     };
 }])
 
-.controller('DishDetailController', ['$scope', '$stateParams', 'menuFactory', 'baseURL', '$ionicPopover', function($scope, $stateParams, menuFactory, baseURL, $ionicPopover) {
+.controller('DishDetailController', ['$scope', '$stateParams', 'menuFactory', 'favoriteFactory', 'baseURL', '$ionicPopover', function($scope, $stateParams, menuFactory, favoriteFactory, baseURL, $ionicPopover) {
     $scope.baseURL = baseURL;
     
     $scope.showDish = false;
@@ -200,11 +200,21 @@ angular.module('conFusion.controllers', [])
     // Execute action on hidden popover
     $scope.$on('popover.hidden', function() {
         // Execute action
+        console.log("Popover Hidden");
     });
     // Execute action on remove popover
     $scope.$on('popover.removed', function() {
         // Execute action
+        console.log("Popover Removed");
     });
+    
+    // Task 2 - Adding the dish to the list of our favorite dishes
+    $scope.addFavorite = function() {
+        index = parseInt($stateParams.id,10);
+        console.log("index is " + index);
+        favoriteFactory.addToFavorites(index);
+        $scope.closePopover();
+    };
 }])
 
 .controller('DishCommentController', ['$scope', 'menuFactory', function($scope, menuFactory) {
