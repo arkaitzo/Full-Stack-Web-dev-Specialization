@@ -70,6 +70,9 @@ angular.module('conFusion.controllers', [])
         $timeout(function() {
             $scope.closeReserve();
         }, 1000);
+        
+        // Reset reservation
+        $scope.reservation = {};
     };
 })
 
@@ -150,7 +153,7 @@ angular.module('conFusion.controllers', [])
             $scope.invalidChannelSelection = false;
 
             // Store the feedback object in the server
-            feedbackFactory.getFeedback().save($scope.feedback);
+            feedbackFactory.save($scope.feedback);
 
             $scope.feedback = {mychannel:"", firstName:"", lastName:"", agree:false, email:"" };
             $scope.feedbackForm.$setPristine();
