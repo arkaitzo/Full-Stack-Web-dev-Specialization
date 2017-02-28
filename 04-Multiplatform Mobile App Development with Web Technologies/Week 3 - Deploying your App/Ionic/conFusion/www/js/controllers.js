@@ -304,7 +304,7 @@ angular.module('conFusion.controllers', [])
 }])
 
 // Implementing the "FavoritesController"...
-.controller('FavoritesController', ['$scope', 'menuFactory', 'favoriteFactory', 'baseURL', '$ionicListDelegate', '$ionicPopup', '$ionicLoading', '$timeout', function ($scope, menuFactory, favoriteFactory, baseURL, $ionicListDelegate, $ionicPopup, $ionicLoading, $timeout) {
+.controller('FavoritesController', ['$scope', 'dishes', 'favorites', 'favoriteFactory', 'baseURL', '$ionicListDelegate', '$ionicPopup', '$ionicLoading', '$timeout', function ($scope, dishes, favorites, favoriteFactory, baseURL, $ionicListDelegate, $ionicPopup, $ionicLoading, $timeout) {
     $scope.baseURL = baseURL;
     $scope.shouldShowDelete = false;
     
@@ -312,22 +312,8 @@ angular.module('conFusion.controllers', [])
         template: '<ion-spinner></ion-spinner> Loading...'
     });
 
-    $scope.favorites = favoriteFactory.getFavorites();
-
-    $scope.dishes = menuFactory.query(
-        function (response) {
-            $scope.dishes = response;
-            $timeout(function () {
-                $ionicLoading.hide();
-            }, 1000);
-        },
-        function (response) {
-            $scope.message = "Error: " + response.status + " " + response.statusText;
-            $timeout(function () {
-                $ionicLoading.hide();
-            }, 1000);
-        }
-    );
+    $scope.favorites = favorites;
+    $scope.dishes = dishes;
     console.log($scope.dishes, $scope.favorites);
 
     $scope.toggleDelete = function () {
