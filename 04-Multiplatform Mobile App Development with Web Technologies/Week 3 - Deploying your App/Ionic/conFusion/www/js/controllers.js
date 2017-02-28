@@ -299,13 +299,10 @@ angular.module('conFusion.controllers', [])
     $scope.baseURL = baseURL;
     $scope.shouldShowDelete = false;
     
-    $ionicLoading.show({
-        template: '<ion-spinner></ion-spinner> Loading...'
-    });
-
     $scope.favorites = favorites;
     $scope.dishes = dishes;
     console.log($scope.dishes, $scope.favorites);
+    
 
     $scope.toggleDelete = function () {
         $scope.shouldShowDelete = !$scope.shouldShowDelete;
