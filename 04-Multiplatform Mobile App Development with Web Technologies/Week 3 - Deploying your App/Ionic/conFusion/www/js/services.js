@@ -11,6 +11,10 @@ angular.module('conFusion.services', ['ngResource'])
             });
         }])
 
+        .factory('promotionFactory', ['$resource', 'baseURL', function ($resource, baseURL) {
+            return $resource(baseURL + "promotions/:id");
+        }])
+
         .factory('corporateFactory', ["$resource", "baseURL", function($resource, baseURL) {
             // This way I can call corporateFactory directly (i.e.: corporateFactory.get({id:3}))
             return $resource(baseURL+"leadership/:id");
