@@ -84,7 +84,7 @@ angular.module('conFusion.controllers', [])
     $scope.message = "Loading ...";
 
     // Returning all the dishes available + Success and Error functions
-    menuFactory.getDishes().query(
+    menuFactory.query(
         // Success function
         function(response) {
             $scope.dishes = response; // 'response' is the actual data in case of success
@@ -167,7 +167,7 @@ angular.module('conFusion.controllers', [])
     $scope.message="Loading ...";
 
     // Returning a specific dish
-    $scope.dish = menuFactory.getDishes().get({id:parseInt($stateParams.id,10)})
+    $scope.dish = menuFactory.get({id:parseInt($stateParams.id,10)})
     .$promise.then(
         function(response){
             $scope.dish = response; // 'response' is the actual data in case of success
@@ -244,7 +244,7 @@ angular.module('conFusion.controllers', [])
         $scope.dish.comments.push($scope.mycomment);
 
         // Store the updated dish object (with the new comment) in the server
-        menuFactory.getDishes().update({id:$scope.dish.id}, $scope.dish);
+        menuFactory.update({id:$scope.dish.id}, $scope.dish);
 
         // Reset the form
         $scope.mycomment = {rating:"", comment:"", author:"", date:""};
@@ -266,7 +266,7 @@ angular.module('conFusion.controllers', [])
         $scope.dish.comments.push($scope.mycomment);
 
         // Store the updated dish object (with the new comment) in the server
-        menuFactory.getDishes().update({id:$scope.dish.id}, $scope.dish);
+        menuFactory.update({id:$scope.dish.id}, $scope.dish);
 
         $scope.commentForm.$setPristine();
         $scope.mycomment = {rating:"5", comment:"", author:"", date:""};
@@ -274,7 +274,7 @@ angular.module('conFusion.controllers', [])
 }])
 
 // implement the "IndexController"...
-.controller('IndexController', ['$scope', 'menuFactory', 'corporateFactory', 'baseURL', function($scope, menuFactory, corporateFactory, baseURL) {
+.controller('IndexController', ['$scope', 'menuFactory', 'promotionFactory', 'corporateFactory', 'baseURL', function($scope, menuFactory, promotionFactory, corporateFactory, baseURL) {
     $scope.baseURL = baseURL;
     
     $scope.leader = corporateFactory.get({id:3});
@@ -282,7 +282,7 @@ angular.module('conFusion.controllers', [])
     $scope.showDish = false;
     $scope.message="Loading ...";
     
-    $scope.dish = menuFactory.getDishes().get({id:0})
+    $scope.dish = menuFactory.get({id:0})
     .$promise.then(
         function(response){
             $scope.dish = response;
@@ -292,7 +292,7 @@ angular.module('conFusion.controllers', [])
             $scope.message = "Error: "+response.status + " " + response.statusText;
         }
     );
-    $scope.promotion = menuFactory.getPromotion().get({id:0});
+    $scope.promotion = promotionFactory.get({id:0});
 }])
 
 // ... and the "AboutController" here
@@ -314,7 +314,7 @@ angular.module('conFusion.controllers', [])
 
     $scope.favorites = favoriteFactory.getFavorites();
 
-    $scope.dishes = menuFactory.getDishes().query(
+    $scope.dishes = menuFactory.query(
         function (response) {
             $scope.dishes = response;
             $timeout(function () {
