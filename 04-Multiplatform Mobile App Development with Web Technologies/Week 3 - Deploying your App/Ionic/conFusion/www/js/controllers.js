@@ -81,7 +81,6 @@ angular.module('conFusion.controllers', [])
     $scope.showDetails = false;
 
     $scope.showMenu = false;
-    $scope.message = "Loading ...";
 
     // Returning all the dishes available + Success and Error functions
     menuFactory.query(
@@ -164,7 +163,6 @@ angular.module('conFusion.controllers', [])
     $scope.baseURL = baseURL;
     
     $scope.showDish = false;
-    $scope.message="Loading ...";
 
     // Returning a specific dish
     $scope.dish = dish;
@@ -271,7 +269,6 @@ angular.module('conFusion.controllers', [])
     $scope.leader = corporateFactory.get({id:3});
     
     $scope.showDish = false;
-    $scope.message="Loading ...";
     
     $scope.dish = menuFactory.get({id:0})
     .$promise.then(
@@ -295,7 +292,7 @@ angular.module('conFusion.controllers', [])
 }])
 
 // Implementing the "FavoritesController"...
-.controller('FavoritesController', ['$scope', 'dishes', 'favorites', 'favoriteFactory', 'baseURL', '$ionicListDelegate', '$ionicPopup', '$ionicLoading', '$timeout', function ($scope, dishes, favorites, favoriteFactory, baseURL, $ionicListDelegate, $ionicPopup, $ionicLoading, $timeout) {
+.controller('FavoritesController', ['$scope', 'dishes', 'favorites', 'favoriteFactory', 'baseURL', '$ionicListDelegate', '$ionicPopup', '$timeout', function ($scope, dishes, favorites, favoriteFactory, baseURL, $ionicListDelegate, $ionicPopup, $timeout) {
     $scope.baseURL = baseURL;
     $scope.shouldShowDelete = false;
     
