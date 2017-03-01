@@ -29,7 +29,7 @@ angular.module('conFusion.services', ['ngResource'])
         .factory('favoriteFactory', ['$resource', 'baseURL', '$localStorage', function ($resource, baseURL, $localStorage) {
             var favFac = {};
             // Assignment 3 - Task 3 - Initialize favorites information from local storage
-            var favorites = $localStorage.getObject('favs','[]');
+            var favorites = $localStorage.getObject('favorites','[]');
 
             favFac.addToFavorites = function (index) {
                 for (var i = 0; i < favorites.length; i++) {
@@ -37,14 +37,14 @@ angular.module('conFusion.services', ['ngResource'])
                         return;
                 }
                 favorites.push({id: index});
-                $localStorage.storeObject('favs',favorites); // Persist this update in the local storage
+                $localStorage.storeObject('favorites',favorites); // Persist this update in the local storage
             }
 
             favFac.deleteFromFavorites = function (index) {
                 for (var i = 0; i < favorites.length; i++) {
                     if (favorites[i].id == index) {
                         favorites.splice(i, 1);
-                        $localStorage.storeObject('favs',favorites); // Persist this update in the local storage
+                        $localStorage.storeObject('favorites',favorites); // Persist this update in the local storage
                     }
                 }
             }
