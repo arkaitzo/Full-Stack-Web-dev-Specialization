@@ -3,7 +3,7 @@
 angular.module('conFusion.services', ['ngResource'])
         .constant("baseURL", "http://192.168.1.33:3000/") // If you change your server, come here and update this baseURL
         // http://localhost:3000/ 192.168.1.33
-        
+
         .factory('menuFactory', ["$resource", "baseURL", function($resource, baseURL) {
             return $resource(baseURL + "dishes/:id", null, {
                 'update': {
@@ -26,9 +26,10 @@ angular.module('conFusion.services', ['ngResource'])
             return $resource(baseURL + "feedback/");
         }])
 
-        .factory('favoriteFactory', ['$resource', 'baseURL', function ($resource, baseURL) {
+        .factory('favoriteFactory', ['$resource', 'baseURL', '$localStorage', function ($resource, baseURL, $localStorage) {
             var favFac = {};
-            var favorites = [];
+            // Assignment 3 - Task 3 - Initialize favorites information from local storage
+            var favorites = $localStorage.getObject('favs','[]');
 
             favFac.addToFavorites = function (index) {
                 for (var i = 0; i < favorites.length; i++) {
@@ -36,12 +37,14 @@ angular.module('conFusion.services', ['ngResource'])
                         return;
                 }
                 favorites.push({id: index});
+                $localStorage.storeObject('favs',favorites); // Persist this update in the local storage
             }
-            
+
             favFac.deleteFromFavorites = function (index) {
                 for (var i = 0; i < favorites.length; i++) {
                     if (favorites[i].id == index) {
                         favorites.splice(i, 1);
+                        $localStorage.storeObject('favs',favorites); // Persist this update in the local storage
                     }
                 }
             }
