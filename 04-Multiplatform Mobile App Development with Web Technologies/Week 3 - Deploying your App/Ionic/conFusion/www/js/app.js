@@ -20,7 +20,7 @@ angular.module('conFusion', ['ionic', 'conFusion.controllers', 'conFusion.servic
       StatusBar.styleDefault();
     }
   });
-    
+
     // Using the ui-router events to show and hide the loading message
     $rootScope.$on('loading:show', function () {
         $ionicLoading.show({
@@ -42,7 +42,7 @@ angular.module('conFusion', ['ionic', 'conFusion.controllers', 'conFusion.servic
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
-  
+
   .state('app', {
     url: '/app',
     abstract: true,
@@ -54,7 +54,19 @@ angular.module('conFusion', ['ionic', 'conFusion.controllers', 'conFusion.servic
     views: {
       'mainContent': {
         templateUrl: 'templates/home.html',
-        controller: 'IndexController'
+        controller: 'IndexController',
+        // Added in Assignment 3 - Task 1
+        resolve: {
+            dish: ['menuFactory', function(menuFactory){
+                return menuFactory.get(0);
+            }],
+            promotion: ['promotionFactory', function(promotionFactory) {
+                return promotionFactory.get(0);
+            }],
+            leader: ['corporateFactory', function(corporateFactory) {
+                return corporateFactory.get(3);
+            }]
+        } // End
       }
     }
   })
@@ -63,7 +75,13 @@ angular.module('conFusion', ['ionic', 'conFusion.controllers', 'conFusion.servic
       views: {
         'mainContent': {
           templateUrl: 'templates/aboutus.html',
-          controller: 'AboutController'
+          controller: 'AboutController',
+          // Added in Assignment 3 - Task 1
+          resolve: {
+              leaders: ['corporateFactory', function(corporateFactory) {
+                  return corporateFactory.query();
+              }]
+          } // End
         }
       }
   })
@@ -97,7 +115,13 @@ angular.module('conFusion', ['ionic', 'conFusion.controllers', 'conFusion.servic
       views: {
         'mainContent': {
           templateUrl: 'templates/menu.html',
-          controller: 'MenuController'
+          controller: 'MenuController',
+          // Added in Assignment 3 - Task 1
+          resolve: {
+              dishes:  ['menuFactory', function(menuFactory){
+                  return menuFactory.query();
+              }]
+          } // End
         }
       }
   })
