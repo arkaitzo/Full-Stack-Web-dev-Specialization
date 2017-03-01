@@ -58,13 +58,13 @@ angular.module('conFusion', ['ionic', 'conFusion.controllers', 'conFusion.servic
         // Added in Assignment 3 - Task 1
         resolve: {
             dish: ['menuFactory', function(menuFactory){
-                return menuFactory.get(0);
+                return menuFactory.get({id:0});
             }],
             promotion: ['promotionFactory', function(promotionFactory) {
-                return promotionFactory.get(0);
+                return promotionFactory.get({id:0});
             }],
             leader: ['corporateFactory', function(corporateFactory) {
-                return corporateFactory.get(3);
+                return corporateFactory.get({id:3});
             }]
         } // End
       }
