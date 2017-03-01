@@ -34,18 +34,18 @@ angular.module('conFusion.controllers', [])
         console.log('Doing login', $scope.loginData);
         $localStorage.storeObject('userinfo',$scope.loginData);
         // In a real application we should encrypt the loginData before storing it in the local storage
-        
+
         // Simulate a login delay. Remove this and replace with your login
         // code if using a login system
         $timeout(function() {
             $scope.closeLogin();
         }, 1000);
     };
-    
-    
+
+
     // Form data for the reserve modal
     $scope.reservation = {};
-    
+
     // Create the reserve modal that we will use later
     $ionicModal.fromTemplateUrl('templates/reserve.html', {
         scope: $scope
@@ -72,33 +72,23 @@ angular.module('conFusion.controllers', [])
         $timeout(function() {
             $scope.closeReserve();
         }, 1000);
-        
+
         // Reset reservation
         $scope.reservation = {};
     };
 })
 
-.controller('MenuController', ['$scope', 'menuFactory', 'favoriteFactory', 'baseURL', '$ionicListDelegate', function($scope, menuFactory, favoriteFactory, baseURL, $ionicListDelegate) {
+.controller('MenuController', ['$scope', 'dishes', 'favoriteFactory', 'baseURL', '$ionicListDelegate', function($scope, dishes, favoriteFactory, baseURL, $ionicListDelegate) {
     $scope.baseURL = baseURL;
-    
+
     $scope.tab = 1;
     $scope.filtText = '';
     $scope.showDetails = false;
 
     $scope.showMenu = false;
 
-    // Returning all the dishes available + Success and Error functions
-    menuFactory.query(
-        // Success function
-        function(response) {
-            $scope.dishes = response; // 'response' is the actual data in case of success
-            $scope.showMenu = true;
-        },
-        // Error function
-        function(response) {
-            $scope.message = "Error: " + response.status + " " + response.statusText;
-        }
-    );
+    // Injecting the data obtained through resolution
+    $scope.dishes = dishes;
 
     $scope.select = function(setTab) {
         $scope.tab = setTab;
@@ -124,7 +114,7 @@ angular.module('conFusion.controllers', [])
     $scope.toggleDetails = function() {
         $scope.showDetails = !$scope.showDetails;
     };
-    
+
     $scope.addFavorite = function (index) {
         console.log("index is " + index);
         favoriteFactory.addToFavorites(index);
@@ -166,12 +156,12 @@ angular.module('conFusion.controllers', [])
 
 .controller('DishDetailController', ['$scope', '$stateParams', 'dish', 'menuFactory', 'favoriteFactory', 'baseURL', '$ionicPopover', '$ionicModal', '$timeout',function($scope, $stateParams, dish, menuFactory, favoriteFactory, baseURL, $ionicPopover, $ionicModal, $timeout) {
     $scope.baseURL = baseURL;
-    
+
     $scope.showDish = false;
 
     // Returning a specific dish
     $scope.dish = dish;
-    
+
     // Assignment 2 - Task 1: Popover
     $ionicPopover.fromTemplateUrl('templates/dish-detail-popover.html', {
         scope: $scope
@@ -198,7 +188,7 @@ angular.module('conFusion.controllers', [])
         // Execute action
         console.log("Popover Removed");
     });
-    
+
     // Assignment 2 - Task 2: Adding the dish to the list of our favorite dishes
     $scope.addFavorite = function() {
         index = parseInt($stateParams.id,10);
@@ -206,7 +196,7 @@ angular.module('conFusion.controllers', [])
         favoriteFactory.addToFavorites(index);
         $scope.closePopover();
     };
-    
+
     // Assignment 2 - Task 3
     // Form data for the comment modal
     $scope.mycomment = {rating:"", comment:"", author:"", date:""};
@@ -233,7 +223,7 @@ angular.module('conFusion.controllers', [])
         $scope.mycomment.date = new Date().toISOString();
         $scope.mycomment.rating = Number($scope.mycomment.rating);
         console.log('Writing comment', $scope.mycomment);
-        
+
         // Add the comment to the comments of this particular dish
         $scope.dish.comments.push($scope.mycomment);
 
@@ -242,7 +232,7 @@ angular.module('conFusion.controllers', [])
 
         // Reset the form
         $scope.mycomment = {rating:"", comment:"", author:"", date:""};
-        
+
         // Close the modal
         $scope.closeComment();
     };
@@ -268,31 +258,22 @@ angular.module('conFusion.controllers', [])
 }])
 
 // implement the "IndexController"...
-.controller('IndexController', ['$scope', 'menuFactory', 'promotionFactory', 'corporateFactory', 'baseURL', function($scope, menuFactory, promotionFactory, corporateFactory, baseURL) {
+.controller('IndexController', ['$scope', 'dish', 'promotion', 'leader', 'baseURL', function($scope, dish, promotion, leader, baseURL) {
     $scope.baseURL = baseURL;
-    
-    $scope.leader = corporateFactory.get({id:3});
-    
     $scope.showDish = false;
-    
-    $scope.dish = menuFactory.get({id:0})
-    .$promise.then(
-        function(response){
-            $scope.dish = response;
-            $scope.showDish = true;
-        },
-        function(response) {
-            $scope.message = "Error: "+response.status + " " + response.statusText;
-        }
-    );
-    $scope.promotion = promotionFactory.get({id:0});
+
+    // Injecting the data obtained through resolution
+    $scope.dish = dish;
+    $scope.promotion = promotion;
+    $scope.leader = leader;
 }])
 
 // ... and the "AboutController" here
-.controller('AboutController', ['$scope', 'corporateFactory', 'baseURL', function($scope, corporateFactory, baseURL) {
+.controller('AboutController', ['$scope', 'leaders', 'baseURL', function($scope, leaders, baseURL) {
     $scope.baseURL = baseURL;
-    
-    $scope.leaders = corporateFactory.query();
+
+    // Injecting the data obtained through resolution
+    $scope.leaders = leaders;
     console.log($scope.leaders);
 }])
 
@@ -300,11 +281,11 @@ angular.module('conFusion.controllers', [])
 .controller('FavoritesController', ['$scope', 'dishes', 'favorites', 'favoriteFactory', 'baseURL', '$ionicListDelegate', '$ionicPopup', '$timeout', function ($scope, dishes, favorites, favoriteFactory, baseURL, $ionicListDelegate, $ionicPopup, $timeout) {
     $scope.baseURL = baseURL;
     $scope.shouldShowDelete = false;
-    
+
     $scope.favorites = favorites;
     $scope.dishes = dishes;
     console.log($scope.dishes, $scope.favorites);
-    
+
 
     $scope.toggleDelete = function () {
         $scope.shouldShowDelete = !$scope.shouldShowDelete;
