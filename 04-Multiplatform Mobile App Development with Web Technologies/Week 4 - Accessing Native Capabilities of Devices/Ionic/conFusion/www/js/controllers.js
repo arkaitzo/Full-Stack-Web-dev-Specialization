@@ -1,6 +1,7 @@
 angular.module('conFusion.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, $localStorage, $ionicPlatform, $cordovaCamera) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $localStorage, $ionicPlatform, $cordovaCamera,
+                                 $cordovaImagePicker, $cordovaFile) {
 
     // With the new view caching in Ionic, Controllers are only called
     // when they are recreated or on app start, instead of every page change.
@@ -128,6 +129,36 @@ angular.module('conFusion.controllers', [])
             
             $scope.registerform.show();
         };
+        
+        
+        // Assignment 4 - Task 1 - Enabling the Image Picker plugin
+        var pictureOptions = {
+            maximumImagesCount: 1,
+            quality: 50,
+            width: 100,
+            height: 100
+        };
+        $scope.getPicture = function () {
+            $cordovaImagePicker.getPictures(pictureOptions).then(function(result) {
+                var imgURI = result[0]; // Enough for the emulator, but not for a real device
+
+                //Extract the directory path from URI
+                var imgDir = imgURI.substring(0,imgURI.lastIndexOf('/'));
+
+                // Extract the file name from URI
+                var imgName = imgURI.substring((imgURI.lastIndexOf('/')+1), imgURI.length); 
+
+                //Read the file as Data URL
+                $cordovaFile.readAsDataURL(imgDir,imgName).then(function(result) {
+                    $scope.registration.imgSrc = result;
+                },
+                function(error){
+                    console.log(error);
+                });
+            });
+            
+            $scope.registerform.show();
+        }; // Enf of Assignment 4 - Task 1
     });
 })
 
