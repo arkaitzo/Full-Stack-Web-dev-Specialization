@@ -300,14 +300,13 @@ angular.module('conFusion.controllers', [])
         console.log("Popover Removed");
     });
 
-    // Assignment 2 - Task 2: Adding the dish to the list of our favorite dishes
     $scope.addFavorite = function() {
         index = parseInt($stateParams.id,10);
         console.log("index is " + index);
         favoriteFactory.addToFavorites(index);
         $scope.closePopover();
         
-        // Notifying the User
+        // Assignment 4 - Task 2 -  Notifying the User
         $ionicPlatform.ready(function () {
             // Notification bar
             $cordovaLocalNotification.schedule({
@@ -331,7 +330,7 @@ angular.module('conFusion.controllers', [])
                 function (error) {
                     // error
                 });
-        });
+        }); // End of Assignment 4 - Task 2
         
     };
 
