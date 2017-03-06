@@ -415,7 +415,7 @@ angular.module('conFusion.controllers', [])
 }])
 
 // Implementing the "FavoritesController"...
-.controller('FavoritesController', ['$scope', 'dishes', 'favorites', 'favoriteFactory', 'baseURL', '$ionicListDelegate', '$ionicPopup', '$timeout', '$cordovaVibration', function ($scope, dishes, favorites, favoriteFactory, baseURL, $ionicListDelegate, $ionicPopup, $timeout, $cordovaVibration) {
+.controller('FavoritesController', ['$scope', 'dishes', 'favorites', 'favoriteFactory', 'baseURL', '$ionicListDelegate', '$ionicPopup', '$timeout', '$ionicPlatform', '$cordovaVibration', function ($scope, dishes, favorites, favoriteFactory, baseURL, $ionicListDelegate, $ionicPopup, $timeout, $ionicPlatform, $cordovaVibration) {
     $scope.baseURL = baseURL;
     $scope.shouldShowDelete = false;
 
@@ -440,8 +440,9 @@ angular.module('conFusion.controllers', [])
                 console.log('Ok to delete');
                 favoriteFactory.deleteFromFavorites(index);
                 // Assignment 4 - Task 3 - Making the phone vibrate
-                $cordovaVibration.vibrate(100);
-                // End of Assignment 4 - Task 3
+                $ionicPlatform.ready(function () {
+                    $cordovaVibration.vibrate(100);
+                }); // End of Assignment 4 - Task 3
             } else {
                 console.log('Canceled delete');
             }
