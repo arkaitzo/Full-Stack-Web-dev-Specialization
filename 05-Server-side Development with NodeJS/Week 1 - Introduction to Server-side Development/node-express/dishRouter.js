@@ -20,7 +20,7 @@ dishRouter.route('/')
     res.end('Deleting all dishes');
 });
 
-// URI: /dishes/:dishId
+// URI: ../:dishId
 dishRouter.route('/:dishId')
 .all(function(req,res,next) {
     res.writeHead(200, { 'Content-Type': 'text/plain' });

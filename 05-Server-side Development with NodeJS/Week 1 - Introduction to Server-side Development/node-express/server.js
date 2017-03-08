@@ -8,11 +8,13 @@ var app = express();
 
 app.use(morgan('dev'));
 
-// Require the Node module within this Express application
+// Require the Node modules within this Express application
 var dishRouter = require('./dishRouter');
+var promoRouter = require('./promoRouter');
 
-// Mount the Node module on the /dishes route
+// Mount the Node modules on the corresponding routes
 app.use('/dishes',dishRouter);
+app.use('/promotions',promoRouter);
 
 app.use(express.static(__dirname + '/public'));
 
