@@ -11,10 +11,12 @@ app.use(morgan('dev'));
 // Require the Node modules within this Express application
 var dishRouter = require('./dishRouter');
 var promoRouter = require('./promoRouter');
+var leaderRouter = require('./leaderRouter');
 
 // Mount the Node modules on the corresponding routes
 app.use('/dishes',dishRouter);
 app.use('/promotions',promoRouter);
+app.use('/leadership',leaderRouter);
 
 app.use(express.static(__dirname + '/public'));
 
