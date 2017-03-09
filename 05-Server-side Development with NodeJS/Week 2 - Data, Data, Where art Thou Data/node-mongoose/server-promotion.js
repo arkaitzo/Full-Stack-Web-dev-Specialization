@@ -1,7 +1,7 @@
 var mongoose = require('mongoose'),
     assert = require('assert');
 
-var Promotions = require('./models/promotion');
+var Promotions = require('./models/promotions');
 
 // Connection URL
 var url = 'mongodb://localhost:27017/conFusion';
