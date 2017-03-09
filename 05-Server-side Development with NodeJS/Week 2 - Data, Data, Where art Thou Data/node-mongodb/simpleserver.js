@@ -9,20 +9,20 @@ var url = 'mongodb://localhost:27017/conFusion';
 MongoClient.connect(url, function (err,db) {
     // In case of error stablishing the connection, the following "assert" will make our app fail and print out the appropriate info.
     assert.equal(err,null);
-    console.log("Connected correctly to server");
+    console.log("\nConnected correctly to server");
     
     var collection = db.collection("dishes");
     
     // Access the docs inside this collection
     collection.insertOne({name: "Uthapizza", description: "Test"}, function(err,result) {
         assert.equal(err,null);
-        console.log("After Insert:");
+        console.log("\nAfter Insert:");
         console.log(result.ops); // Log the inserted document
         
         // Retrieve ALL the docs that are part of this collection and transform the returned value into an array of JS objects
         collection.find({}).toArray(function(err,docs) {
             assert.equal(err,null);
-            console.log("Found:");
+            console.log("\nFound:");
             console.log(docs);
             // Drop the "dishes" collection and close the connection
             db.dropCollection("dishes", function(err,result) {
