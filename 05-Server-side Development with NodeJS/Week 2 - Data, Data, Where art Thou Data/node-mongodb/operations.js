@@ -7,7 +7,7 @@ exports.insertDocument = function(db,document,collection,callback) {
     // Insert some documents
     coll.insert(document, function(err,result) {
         assert.equal(err, null);
-        console.log("Inserted " + result.result.n + " documents into the document collection "
+        console.log("\nInserted " + result.result.n + " documents into the document collection "
                     + collection);
         callback(result);
     });
@@ -31,7 +31,7 @@ exports.removeDocument = function(db, document,collection,callback) {
     // Delete the document
     coll.deleteOne(document, function(err,result) {
         assert.equal(err, null);
-        console.log("Removed the document " + document);
+        console.log("\nRemoved the document " + document);
         callback(result);
     });
 };
@@ -43,7 +43,7 @@ exports.updateDocument = function(db,document,update,collection,callback) {
     // Update document
     coll.updateOne(document, { $set: update }, null, function(err,result) {
         assert.equal(err, null);
-        console.log("Updated the document with " + update);
+        console.log("\nUpdated the document with " + update);
         callback(result);
     });
 };
