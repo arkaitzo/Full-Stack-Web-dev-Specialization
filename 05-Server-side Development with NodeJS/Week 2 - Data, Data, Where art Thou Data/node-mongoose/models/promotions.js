@@ -14,7 +14,6 @@ var promotionSchema = new Schema(
             required: true,
             unique: true
         },
-        // Assignment 2 - Task 2
         image: {
             type: String,
             required: true
@@ -27,7 +26,7 @@ var promotionSchema = new Schema(
         price: {
             type: Currency,
             required: true
-        }, // End of Assignment 2 - Task 2
+        },
         description: {
             type: String,
             required: true
