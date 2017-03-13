@@ -6,7 +6,6 @@ var port = 3000;
 
 // #1
 var app = express();
-
 app.use(morgan('dev'));
 
 // Adding basic authentication
