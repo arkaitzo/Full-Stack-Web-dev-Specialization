@@ -9,9 +9,9 @@ var Verify    = require('./verify');
 // URI: /users/ - GET users listing
 router.get('/', Verify.verifyOrdinaryUser, Verify.verifyAdmin, function(req, res, next) {
     //res.send('respond with a resource');
-    User.find({}, function (err,dish) {
+    User.find({}, function (err,user) {
         if (err) throw err;
-        res.json(dish);
+        res.json(user);
     });
 });
 // End of Assignment 3.3
