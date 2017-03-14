@@ -1,13 +1,20 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
+
 var User = require('../models/user');
 var Verify    = require('./verify');
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+// Assignment 3.3 - Allowing an "admin" user to be able to GET all the registered users' info. from the db
+// URI: /users/ - GET users listing
+router.get('/', Verify.verifyOrdinaryUser, Verify.verifyAdmin, function(req, res, next) {
+    //res.send('respond with a resource');
+    User.find({}, function (err,dish) {
+        if (err) throw err;
+        res.json(dish);
+    });
 });
+// End of Assignment 3.3
 
 // URI: /users/register - Registering a new user
 router.post('/register', function(req,res) {
