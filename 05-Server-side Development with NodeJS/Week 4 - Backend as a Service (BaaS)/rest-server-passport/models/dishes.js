@@ -18,9 +18,10 @@ var commentSchema = new Schema(
             type: String,
             required: true
         },
-        author:  {
-            type: String,
-            required: true
+        postedBy: {
+            type: mongoose.Schema.Types.ObjectId, // ObjecId of...
+            ref: 'User' // ... the user that created this comment -> Reference to the 'User' object
+            // We can populate the user information into this document (this comment)
         }
     },
     {
