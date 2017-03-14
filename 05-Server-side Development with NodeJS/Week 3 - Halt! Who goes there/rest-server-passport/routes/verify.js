@@ -35,3 +35,15 @@ exports.verifyOrdinaryUser = function (req,res,next) {
         return next(err);
     }
 };
+
+// Assignment 3.1 - Check if a verified user also has admin privileges
+exports.verifyAdmin = function (req,res,next) {
+    if (req.decoded._doc.admin) {
+        next();
+    } else {
+        var err = new Error('You are not authorized to perform this operation!');
+        err.status = 403;
+        return next(err);
+    }
+};
+// End of Assignment 3.1
