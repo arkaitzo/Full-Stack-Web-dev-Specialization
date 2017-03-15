@@ -25,6 +25,16 @@ var leaderRouter = require('./routes/leaderRouter');
 
 var app = express();
 
+// This first middleware will intercept all the incoming traffic and make it secure
+app.all('*', function(req, res, next){
+    console.log('req start: ',req.secure, req.hostname, req.url, app.get('port'));
+    if (req.secure) {
+        return next(); // If it is already secure, continue...
+    };
+    // ... otherwise redirect the incoming traffic to the secure server
+    res.redirect('https://'+req.hostname+':'+app.get('secPort')+req.url);
+});
+
 // view engine setup - Templating engines
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
