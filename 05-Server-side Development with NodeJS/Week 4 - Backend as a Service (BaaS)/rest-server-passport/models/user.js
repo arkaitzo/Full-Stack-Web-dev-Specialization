@@ -6,6 +6,8 @@ var User = new Schema(
     {
         username: String, // Even if we don't declare 'username', passportLocalMongoose will automatically insert it
         password: String, // Even if we don't declare 'password', passportLocalMongoose will automatically insert it
+        OauthId: String, // Empty for users registered as local users
+        OauthToken: String, // Empty for users registered as local users
         firstname: {
             type: String,
             default: ''
