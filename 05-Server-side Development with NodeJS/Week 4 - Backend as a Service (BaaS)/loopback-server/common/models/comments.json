@@ -17,7 +17,7 @@
     }
   },
   "mixins": {
-    "TimeStamp": true // createdAt and updatedAt
+    "TimeStamp": true
   },
   "validations": [],
   "relations": {
