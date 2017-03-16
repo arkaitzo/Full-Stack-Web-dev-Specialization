@@ -16,6 +16,9 @@
       "required": true
     }
   },
+  "mixins": {
+    "TimeStamp": true // createdAt and updatedAt
+  },
   "validations": [],
   "relations": {
     "dishes": {
