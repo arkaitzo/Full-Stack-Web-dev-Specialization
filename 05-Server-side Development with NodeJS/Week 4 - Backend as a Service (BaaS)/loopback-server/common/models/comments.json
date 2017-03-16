@@ -1,0 +1,23 @@
+{
+  "name": "Comments",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "Rating": {
+      "type": "number",
+      "required": true,
+      "default": 5
+    },
+    "Comment": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
