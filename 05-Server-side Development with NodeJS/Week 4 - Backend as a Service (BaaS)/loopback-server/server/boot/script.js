@@ -13,8 +13,8 @@ module.exports = function(app){
             if (err) throw (err);
             var Role = app.models.Role;
             var RoleMapping = app.models.RoleMapping;
-
-            //create the admin role
+            
+            // create the admin role
             Role.create({
                 name: 'admin'
             }, function(err, role) {
@@ -27,6 +27,28 @@ module.exports = function(app){
                     if (err) throw (err);
                 });
             });
+
+            /*
+            //create the admin role if it doesn't already exist
+            Role.find({name: 'admin'}, function(err,result) {
+                if (err) throw err;
+                if (result.length < 1) {
+                    // Create the 'admin' role because it doesn't exist yet
+                    Role.create({
+                        name: 'admin'
+                    }, function(err, role) {
+                        if (err) throw (err);
+                        //make admin
+                        role.principals.create({
+                            principalType: RoleMapping.USER,
+                            principalId: users[0].id // Make the 1st user admin
+                        }, function(err, principal) {
+                            if (err) throw (err);
+                        });
+                    });
+                }
+            });
+            */
         });
     });
 };
