@@ -53,11 +53,15 @@ var dishSchema = new Schema(
         },
         price: {
             type: Currency,
-            required: true
+            required: true,
+            min: 0
         }, // End of Assignment 2 - Task 1
         description: {
             type: String,
             required: true
+        },featured: {
+            type: Boolean,
+            default:false
         },
         comments:[commentSchema]
     },

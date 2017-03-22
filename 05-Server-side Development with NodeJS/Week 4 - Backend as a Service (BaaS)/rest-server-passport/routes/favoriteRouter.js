@@ -60,7 +60,6 @@ favoriteRouter.route('/')
 favoriteRouter.route('/:dishId')
 .all(Verify.verifyOrdinaryUser)
 .delete(function (req,res,next) {
-    console.log("Plato a borrar: " + req.params.dishId);
     Favorites.findOne({'postedBy': req.decoded._doc._id}, '', function (err, favorite) {
         if (err) throw err;
         favorite.dishes.pull(req.params.dishId);
