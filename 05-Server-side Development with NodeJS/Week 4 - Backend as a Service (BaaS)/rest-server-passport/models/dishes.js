@@ -59,7 +59,8 @@ var dishSchema = new Schema(
         description: {
             type: String,
             required: true
-        },featured: {
+        },
+        featured: {
             type: Boolean,
             default:false
         },

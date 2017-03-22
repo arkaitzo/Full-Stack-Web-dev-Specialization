@@ -12,7 +12,7 @@ favoriteRouter.use(bodyParser.json());
 favoriteRouter.route('/')
 .all(Verify.verifyOrdinaryUser)
 .get(function(req,res,next) {
-    Favorites.findOne({'postedBy': req.decoded._doc._id}, '')
+    Favorites.findOne({'postedBy': req.decoded._id}, '')
         .populate('postedBy dishes') // Populate the info of dishes and individual users into the document
         .exec(function (err,favorite) {
             if (err) throw err;
@@ -21,12 +21,12 @@ favoriteRouter.route('/')
 
 })
 .post(function (req,res,next) {
-    Favorites.findOne({'postedBy': req.decoded._doc._id}, '', function (err, favorite) {
+    Favorites.findOne({'postedBy': req.decoded._id}, '', function (err, favorite) {
         if (err) throw err;
         
         if (favorite == null) { // Create a favorites document corresponding to this user
             favorite = new Favorites();
-            favorite.postedBy = req.decoded._doc._id;
+            favorite.postedBy = req.decoded._id;
             favorite.dishes.push(req.body._id);
             favorite.save(function (err, favorite) {
                 if (err) throw err;
@@ -49,7 +49,7 @@ favoriteRouter.route('/')
 })
 .delete(function (req,res,next) {
     // Delete the list of favorites corresponding to this particular user
-    Favorites.remove({'postedBy': req.decoded._doc._id}, function (err,favorite) {
+    Favorites.remove({'postedBy': req.decoded._id}, function (err,favorite) {
         if (err) throw err;
         res.json(favorite);
     });
@@ -60,7 +60,7 @@ favoriteRouter.route('/')
 favoriteRouter.route('/:dishId')
 .all(Verify.verifyOrdinaryUser)
 .delete(function (req,res,next) {
-    Favorites.findOne({'postedBy': req.decoded._doc._id}, '', function (err, favorite) {
+    Favorites.findOne({'postedBy': req.decoded._id}, '', function (err, favorite) {
         if (err) throw err;
         favorite.dishes.pull(req.params.dishId);
         favorite.save(function (err, resp) {
