@@ -10,7 +10,7 @@ leaderRouter.use(bodyParser.json());
 
 // URI: /
 leaderRouter.route('/')
-.get(Verify.verifyOrdinaryUser, function(req,res,next) {
+.get(function(req,res,next) {
     Leaders.find(req.query, function (err,leader) {
         if (err) return next(err);
         res.json(leader);
@@ -38,7 +38,7 @@ leaderRouter.route('/')
 
 // URI: ../:leaderId
 leaderRouter.route('/:leaderId')
-.get(Verify.verifyOrdinaryUser, function (req,res,next) {
+.get(function (req,res,next) {
     Leaders.findById(req.params.leaderId, function (err,leader) {
         if (err) return next(err);
         res.json(leader);

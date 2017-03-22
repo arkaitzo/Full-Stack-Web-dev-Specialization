@@ -10,7 +10,7 @@ promoRouter.use(bodyParser.json());
 
 // URI: /
 promoRouter.route('/')
-.get(Verify.verifyOrdinaryUser, function(req,res,next) {
+.get(function(req,res,next) {
     Promotions.find(req.query, function (err,promotion) {
         if (err) return next(err);
         res.json(promotion);
@@ -38,7 +38,7 @@ promoRouter.route('/')
 
 // URI: ../:promoId
 promoRouter.route('/:promoId')
-.get(Verify.verifyOrdinaryUser, function (req,res,next) {
+.get(function (req,res,next) {
     Promotions.findById(req.params.promoId, function (err,promotion) {
         if (err) return next(err);
         res.json(promotion);
