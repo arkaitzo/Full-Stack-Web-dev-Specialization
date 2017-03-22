@@ -57,7 +57,8 @@ router.post('/login', function(req,res,next) {
                 });
             }
             
-            var token = Verify.getToken(user);
+            // var token = Verify.getToken(user); // Using the entire user body as part of the request for getting the token
+            var token = Verify.getToken({"username":user.username, "_id":user._id, "admin":user.admin}); // Select only certain fields from the user object and pass it to the getToken
             res.status(200).json({
                 status: 'Login successful!',
                 success: true,
