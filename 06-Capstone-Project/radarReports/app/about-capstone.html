@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="reportApp">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head 
+         content must come *after* these tags -->
+    
+    <title>Radar Reports - About</title>    
+    <!-- Bootstrap -->
+    <!-- build:css styles/main.css -->
+    <!--
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../bower_components/ng-dialog/css/ngDialog.min.css" rel="stylesheet">
+    <link href="../bower_components/ng-dialog/css/ngDialog-theme-plain.min.css" rel="stylesheet">
+    <link href="../bower_components/ng-dialog/css/ngDialog-theme-default.min.css" rel="stylesheet">
+    <link href="styles/bootstrap-social.css" rel="stylesheet">
+    <link href="styles/mystyles.css" rel="stylesheet">
+    -->
+    <!-- endbuild -->
+    
+    <!-- Bootstrap -->
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- MÁS -->
+    <link href="./styles/capstone-styles.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto|Source+Sans+Pro" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body class="home-body">
+    <!-- <div ui-view="header"></div> -->
+    <!-- <div ui-view="content"></div> -->
+    <!-- <div ui-view="footer"></div>  -->
+    
+    <!-- 'header.html' -->
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- Clicking the logo takes you to the home page -> 'ui-sref' instead of 'href' -->
+                <a class="navbar-brand" href="home-capstone.html"><img src="./images/logo-euskalmet-v1.png" height=25></a> <!-- ui-sref="app" -->
+            </div>
+            <div id="navbar" class="navbar-collapse collapse"> <!-- id="navbar" this block will collapse -->
+                <ul class="nav navbar-nav">
+                    <li ng-class="{active: stateis('app')}"><a href="home-capstone.html"> <!-- ui-sref="app" -->
+                        <span class="glyphicon glyphicon-home"
+                         aria-hidden="true"></span> Home</a></li>
+                    <li ng-class="{active: stateis('app.aboutus')}"><a href="about-capstone.html"> <!-- ui-sref="app.aboutus" -->
+                        <span class="glyphicon glyphicon-info-sign"
+                         aria-hidden="true"></span> About</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <!--
+                    <li ng-if="!loggedIn">
+                        <a ng-click="openLogin()">
+                            <span class="glyphicon glyphicon-log-in"></span> Login
+                        </a>
+                    </li>
+                    -->
+                    <li ng-if="loggedIn">
+                        <a ng-click="logOut()">
+                            <span class="glyphicon glyphicon-log-in"></span> Logout (<small>user</small>) <!-- -->
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>         
+               
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-10">
+                    <h1>Radar Reports!</h1>
+                    <p class="hidden-xs hidden-sm lead">Lorem fistrum nostrud ese pedazo de condemor nisi occaecat dolor et. Quietooor condemor se calle ustée está la cosa muy malar por la gloria de mi madre ullamco. Qué dise usteer qué dise usteer consectetur te voy a borrar el cerito la caidita qui. Condemor minim me cago en tus muelas veniam sed benemeritaar va usté muy cargadoo eiusmod mamaar sexuarl.</p>
+                    <p class="hidden-md hidden-lg lead">Lorem fistrum nostrud ese pedazo de condemor nisi occaecat dolor et. Quietooor condemor se calle ustée está la cosa muy malar por la gloria de mi madre ullamco.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of 'header.html' -->
+    
+    
+    
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-md-8">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">Where are we? |
+                        <small style="color:lightgray">Portal de Foronda 41, Vitoria-Gasteiz (Spain)</small></div>
+                </div>
+                <div class="google-maps">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2924.4130071839827!2d-2.6880673844957044!3d42.86412617915622!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4fc23100147b51%3A0x9c518696c4bab75f!2sPortal+de+Foronda+Kalea%2C+41%2C+01010+Vitoria-Gasteiz%2C+Araba!5e0!3m2!1ses!2ses!4v1490963466002" width="600" height="450" frameborder="0" style="border:0"></iframe>
+                </div>
+                
+                <!-- Blank space - Only visible in xs screens -->
+                <div class="col-xs-12">
+                    <div class="hidden-sm hidden-md hidden-lg">&nbsp;</div>
+                </div>
+                <!-- Blank space - Only visible in xs and sm screens -->
+                <div class="col-xs-12">
+                    <div class="hidden-md hidden-lg">&nbsp;</div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-md-4">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">Our story |
+                        <small style="color:lightgray">Brief and faked</small></div>
+                </div>
+                <div>
+                    <span>Lorem fistrum consectetur ese que llega está la cosa muy malar. Aute condemor se calle ustée papaar papaar voluptate llevame al sircoo no te digo trigo por no llamarte Rodrigor llevame al sircoo benemeritaar. Llevame al sircoo ut adipisicing ad exercitation apetecan velit de la pradera torpedo a wan incididunt. Nostrud quietooor enim mamaar ullamco enim veniam está la cosa muy malar. Papaar papaar condemor apetecan enim qué dise usteer amatomaa.<br><br>A wan sexuarl cillum jarl pupita dolor magna dolore ut. No te digo trigo por no llamarte Rodrigor amatomaa condemor quis reprehenderit commodo ahorarr ahorarr. Papaar papaar cillum me cago en tus muelas esse te voy a borrar el cerito qué dise usteer a gramenawer no te digo trigo por no llamarte Rodrigor. Enim commodo sed quietooor. Hasta luego Lucas eiusmod diodeno consequat pecador benemeritaar minim ut. A gramenawer ullamco ese pedazo de mamaar jarl adipisicing sexuarl.<br><br>A peich diodenoo está la cosa muy malar sit amet apetecan aliquip aliquip diodeno minim sit amet. A gramenawer diodeno ahorarr a gramenawer fistro sexuarl. Va usté muy cargadoo torpedo te va a hasé pupitaa por la gloria de mi madre de la pradera la caidita quietooor tiene musho peligro sexuarl enim. Nostrud amatomaa fistro consectetur. La caidita aute condemor va usté muy cargadoo aliquip ut et pecador a wan a gramenawer.</span>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <footer class="row-footer">
+        <div class="container">
+            <div class="row">
+                <!-- Copyright -->
+                <div class="col-xs-12 col-sm-4">
+                    <p style="padding:25px;"></p>
+                    <p align=center>© Copyright 2017 Euskalmet</p>
+                </div>
+                
+                <!-- Address -->
+                <div align=center class="col-xs-12 col-sm-4">
+                    <p style="padding:5px;"></p>
+                    <h5>Our Address</h5>
+                    <address>
+		              Portal de Foronda 41, 5th Floor<br>
+		              Vitoria-Gasteiz (Álava)<br>
+		              Spain<br>
+		              <i class="fa fa-envelope"></i> - 
+                         <a href="mailto:radar@reports.yeah">radar@reports.yeah</a>
+                    </address>
+                </div>
+                
+                <!-- Social media -->
+                <div class="col-xs-12 col-sm-4">
+                    <div align=center>
+                        <p style="padding:20px;"></p>
+                        <a class="btn btn-social-icon btn-twitter"
+                           href="https://twitter.com/euskalmet" target="_blank" title="Twitter: @euskalmet">
+                            <i class="fa fa-twitter icon-social"></i></a>
+                        <a class="btn btn-social-icon btn-youtube"
+                           href="https://youtube.com/euskalmet" target="_blank" title="YouTube">
+                            <i class="fa fa-youtube icon-social"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    
+    <!-- build:js scripts/main.js -->
+    <!--
+    <script src="../bower_components/angular/angular.min.js"></script>
+    <script src="../bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="../bower_components/angular-resource/angular-resource.min.js"></script>
+    <script src="../bower_components/ng-dialog/js/ngDialog.min.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers.js"></script>
+    <script src="scripts/services.js"></script>
+    -->
+    <!-- endbuild -->
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    
+<script>
+    function myMap() {
+        var mapCanvas = document.getElementById("map");
+        var mapOptions = {
+            center: new google.maps.LatLng(42.864095, -2.685793), zoom: 16
+        };
+        var map = new google.maps.Map(mapCanvas, mapOptions);
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhVu0ryabMO_Jjw2CGuEzX5vQfNfUHNqo&callback=myMap"></script>
+
+</body>
+
+</html>

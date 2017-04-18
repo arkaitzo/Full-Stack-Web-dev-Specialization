@@ -1,0 +1,165 @@
+.modal-content {
+    background-color: whitesmoke;
+}
+
+.link-unstyled {
+    color: inherit;
+}
+.link-unstyled:hover, .link-unstyled:focus {
+    color: #2E6DA4;
+    text-decoration: inherit;
+}
+
+
+.google-maps {
+    position: relative;
+    padding-bottom: 75%; /* This is the aspect ratio */
+    height: 0;
+    overflow: hidden;
+}
+.google-maps iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+
+
+body {
+    /*
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
+    */
+    font-family: 'Open Sans', sans-serif;
+}
+
+/*
+ * Styles for index.html
+ */
+.index-background {
+    background-image: url("../images/background.png");
+    background-attachment: fixed;
+    background-position: 50% 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: whitesmoke;
+    
+    height: 100vh;
+}
+
+.custom-valign {
+    position: relative;
+    top: 50%;
+    transform: perspective(1px) translateY(-50%);
+}
+.index-input {
+    background-color: rgba(255,255,255,0.75);
+    /*
+    border: none;
+    border-bottom: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: whitesmoke;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    */
+}
+/* Buttons */
+.index-btn {
+    margin-left: 50px;
+}
+
+/******************************************************
+ *****************************************************/
+
+
+/*
+ * Styles for home.html
+ */
+
+/* Header */
+.jumbotron{
+    background-image: url("../images/radar-jumbotron.png");
+    background-attachment: fixed;
+    background-position: 0% 0%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: whitesmoke;
+    text-shadow: lightgray 0.1em 0.1em 0.1em;
+}
+
+/* Body */
+.home-body {    
+    align-items: center;
+    padding: 50px 0px 0px 0px;
+    z-index: 0;
+}
+
+/* Footer */
+.row-footer {
+    padding: 10px 0px;
+    margin-top: 50px;
+    background-color: #F8F8F8;
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-top-color: #F0F0F0;
+}
+
+
+/* Vertical line dividing the report and the last report
+ * Para usar, añadir la clase "vdivide" junto a "row" y "vdivide-this" a las columnas que desee
+*/
+/*
+.row.vdivide [class*='vdivide-this']:not(:last-child):after {
+    background: #EEEEEE;
+    width: 1px;
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    min-height: 70px;
+}
+*/
+
+.scroll-list{
+    height: 78vh;
+    overflow-y: auto;
+}
+.report-list-item {
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-color: lightgrey;
+}
+.report-media {
+    padding: 20px;
+}
+
+/* Icons */
+.icon-list {
+    text-shadow: 1px 1px 1px;
+    font-size: 3em;
+}
+.icon-social {
+    text-shadow: 1px 1px 1px;
+    font-size: 2em;
+}
+.icon-blue {
+    color: dodgerblue;
+}
+.icon-green {
+    color: darkgreen;
+}
+.icon-yellow {
+    color: #FFEB3B;
+}
+.icon-red {
+    color: orangered;
+}
+
+/**/
+.dropdown-header {
+    color: #2F6FA6;
+}
